@@ -1,8 +1,8 @@
-"use strict";
 var Cows;
 (function (Cows) {
     let nums = [2, 6, 5];
     let results = [];
+    debugger;
     for (let i = 0; i < nums.length; i++) {
         let result = createCall("m", nums[i]);
         results.push(result);

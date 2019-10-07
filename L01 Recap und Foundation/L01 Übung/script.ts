@@ -8,4 +8,4 @@ interface MapStringToBoolean {
     [key: string]: boolean;
     }
 //let t: MapStringToBoolean = {"wert1" :true,"wert2": false};
-//console.log(t);
+//console.log(t); 
