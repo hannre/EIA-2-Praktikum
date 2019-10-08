@@ -1,3 +1,4 @@
+"use strict";
 // L01 Recap und Foundation -- Übung
 let v = 1;
 v = v + 1;
