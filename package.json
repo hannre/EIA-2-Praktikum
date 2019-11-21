@@ -1,0 +1,26 @@
+{
+  "name": "eia-2-praktikum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "tslint": "^5.20.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node Aufgaben/L06_Server/Cocktail_Bar/Server/Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannre/EIA-2-Praktikum.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannre/EIA-2-Praktikum/issues"
+  },
+  "homepage": "https://github.com/hannre/EIA-2-Praktikum#readme"
+}

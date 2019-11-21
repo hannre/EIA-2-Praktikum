@@ -1,6 +1,6 @@
 namespace L05_CharacterEditor {
 
- /*  
+ 
     export function generateContent(_data: Data): void {
         console.log(_data);
 
@@ -42,14 +42,14 @@ namespace L05_CharacterEditor {
             
             let option: HTMLOptionElement = document.createElement("option");
             //select.selectedOptions: HTMLCollectionOf<HTMLOptionElement>();
-            option.value = item.Item.name;
-            option.setAttribute("price", item.price.toFixed(2));
+            option.value = item.Items.name;
+            option.setAttribute("weight", item.Items.weight.toFixed(2));
             select.name = _category;
-            option.id = item.name;
+            option.id = item.Items.name;
 
             let label: HTMLLabelElement = document.createElement("label");      // label ist der Name des Item der auf der Seite angezeigt wird
-            label.textContent = item.name;
-            label.htmlFor = item.name;
+            label.textContent = item.Items.name;
+            label.htmlFor = item.Items.name;
 
             select.appendChild(option);
             option.appendChild(label);
@@ -65,10 +65,10 @@ namespace L05_CharacterEditor {
         for (let item of _items) {
             let radio: HTMLInputElement = document.createElement("input");
             radio.type = "radio";
-            radio.setAttribute("price", item.price.toFixed(2));
-            radio.value = item.name;
+            radio.setAttribute("weight", item.weight.toFixed(2));
+            radio.value = item.Items.name;
             radio.name = _category;
-            radio.id = item.name;
+            radio.id = item.Items.name;
 
             let label: HTMLLabelElement = document.createElement("label");
             label.textContent = item.name;
@@ -79,28 +79,7 @@ namespace L05_CharacterEditor {
         }
         return group;
     }
-    function createMultiple(_items: Item[], _category: string): HTMLElement | null {
-        //console.log("halloooooo");
-        let group: HTMLDivElement = document.createElement("div");                         // diese group gilt nur in createMultiple (nicht das gleiche group wie in function generateContent)
-        for (let item of _items) {          // "for of"-schleife gibt gleich die Elemente (bzw. die Werte) raus und "for in"-schleife gibt die Namen raus (also 0, 1, 2, 3 etc.)
-            let checkbox: HTMLInputElement = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.setAttribute("price", item.price.toFixed(2));      //toFixed(2) --> zwei Nachkkommastellen
-            checkbox.value = item.name;
-            checkbox.name = _category;
-            checkbox.id = item.name;
+   
 
-        //console.log(checkbox);
-            let label: HTMLLabelElement = document.createElement("label");
-            label.textContent = item.name;
-            label.htmlFor = item.name;
-
-            group.appendChild(checkbox);
-            group.appendChild(label);
-        }
-        return group;
-    }
-
-  */
 
 } 

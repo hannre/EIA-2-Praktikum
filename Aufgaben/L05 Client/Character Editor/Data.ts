@@ -1,4 +1,6 @@
 namespace L05_CharacterEditor {
+
+    
     export interface Item {
         name: string;
         weight: number;
