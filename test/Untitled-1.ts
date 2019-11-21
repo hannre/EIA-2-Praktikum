@@ -1,4 +1,7 @@
 namespace Boxes {
+
+
+    console.log("hallo");
     let n: number = 5;
     let color: string;
     let x: number = 0;
