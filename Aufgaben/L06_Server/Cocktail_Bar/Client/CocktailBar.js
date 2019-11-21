@@ -3,12 +3,11 @@ var L06_CocktailBar;
 (function (L06_CocktailBar) {
     window.addEventListener("load", handleLoad);
     let form;
-    let url = "http://localhost:5001";
+    let url = "https://hanre.herokuapp.com/";
     async function handleLoad(_event) {
         console.log("Test");
         let response = await fetch("Data.json");
         let offer = await response.text();
-        // tslint:disable-next-line: typedef
         let data = JSON.parse(offer);
         L06_CocktailBar.generateContent(data);
         form = document.querySelector("form");

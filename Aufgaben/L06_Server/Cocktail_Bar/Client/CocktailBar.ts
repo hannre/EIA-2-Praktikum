@@ -1,15 +1,14 @@
 namespace L06_CocktailBar {
     window.addEventListener("load", handleLoad);
     let form: HTMLFormElement;
-    let url: string = "http://localhost:5001";
+    let url: string = "https://hanre.herokuapp.com/";
 
     async function handleLoad (_event: Event): Promise<void> {
         console.log("Test");
 
         let response: Response = await fetch("Data.json");
         let offer: string = await response.text();
-        // tslint:disable-next-line: typedef
-        let data = JSON.parse(offer);
+        let data: Data = JSON.parse(offer);
         generateContent(data);
 
 
