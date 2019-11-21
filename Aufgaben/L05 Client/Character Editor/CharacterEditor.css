@@ -1,0 +1,51 @@
+body {
+	display: grid;
+	grid-template-columns: 70% auto;
+	grid-template-rows: auto auto
+}
+
+header {
+	grid-column: span 2;
+	text-align: center;
+}
+
+div {
+	border: thin solid black;
+	margin: 1em;
+}
+
+h2 {
+	text-align: center;
+}
+
+input:required {
+	background-color: #f3390067;
+}
+
+input[type="text"] {
+	display: block;
+}
+
+label[for="divers"]::after{
+	content: "";
+	display: block;
+}
+
+input[type="date"], select, input[type="color"], textarea, label[for="Schwert"], label[for="Doppel-Schwert"] {
+	display: block;
+}
+
+span {
+	display: block;
+}
+
+progress {
+	height:3em;
+	width: 4em;
+	transform: rotate(-90deg);
+}
+
+#slider {
+	display: grid;
+	grid-template-columns: auto auto;
+}

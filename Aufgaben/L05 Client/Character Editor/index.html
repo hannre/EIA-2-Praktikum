@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Character Editor</title>
+    <link rel="stylesheet" href="CharacterEditor.css" type="text/css" media="screen" />
+    <script src="CharacterEditor.js" type="text/javascript" charset="utf-8"></script>
+    <script src="GenerateContent.js" type="text/javascript" charset="utf-8"></script>
+    <script src="Data.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Character Editor</h1>
+        <p> Create your character by choosing certain properties on the left side. Check the character on the right.</p>
+    </header>
+
+    <form>
+        <div id="form">
+            <h2>Choose the properties</h2>
+            <fieldset id="General">
+                <legend>General</legend>
+                <input type="text" name="Name" placeholder="name" id="name"  required/>
+
+                <input type="radio"name="Gender" id="male" value="male"/>
+                <label for="male">Male</label>
+                <input type="radio" name="Gender" id="female" value="female" />
+                <label for="female">Female</label>
+                <input type="radio" name="Gender" id="divers" value="divers" />
+                <label for="divers">Divers</label>
+                
+                <label for="date">Birthday: </label>  
+                <input type="date" name="Birth" id="birth"/>
+
+                <label for="Race">Race: </label>
+                <select name="Race">
+                    <option value="Zwerg">Zwerg</option>
+                    <option value="Zwerg">Ork</option>
+                    <option value="Zwerg">Elf</option>
+                    <option value="Zwerg">Kobold</option>
+                    <option value="Zwerg">Riese</option>
+                </select>
+
+
+                <label for="Class">Class: </label>
+                <select name="Class">
+                    <option value="Krieger">Krieger</option>
+                    <option value="Krieger">Dieb</option>
+                    <option value="Krieger">Zauberer</option>
+                    <option value="Krieger">Steuerberater</option>
+                    <option value="Krieger">Bettler</option>
+                </select>
+
+            </fieldset>
+
+            <fieldset id="Appearance">
+                <legend>Appearance</legend>
+                    <span>
+                        <label for="Size">Size: </label>
+                        1 Meter 
+                        <input type="range" name="Size" id="size" min="1.0" max="2.0" step="0.1" value="1">
+                        2 Meter
+                    </span>
+
+                    <span>
+                        <label for="Weight">Weight: </label>
+                        10kg
+                        <input type="range" name="Weight" id="weight" min="10" max="100" step="1" value="10">
+                        100kg
+                    </span>
+
+                    <label for="EyeColor">Eye color: </label>
+                    <input type="color" name="EyeColor" placeholder="red" id="eyeColor" value="#ff0000">
+
+                    <label for="HairColor">Hair color: </label>
+                    <input type="color" name="HairColor" placeholder="red" id="hairColor" value="#ff0000">
+
+            </fieldset>
+
+            <fieldset id="Utensilien">
+                <legend>Utensilien</legend>
+
+                <label for="Accessoires">Accessoires: </label>
+                <select name="Accessoires" id="accessoires">
+                    <option value="Kette" weight="0.3">Kette</option>
+                    <option value="Ring" weight="0.2">Ring</option>
+                    <option value="Ohrringe" weight="0.3">Ohrringe</option>
+                    <option value="Gürtel" weight="0.5">Gürtel</option>
+                    <option value="Handtasche" weight="1.5">Handtasche</option>
+                </select>
+
+                <label for="Schwert">Einhändige Waffen:</label>
+                <input type="radio" name="Weapon" value="Schwert" weight=2.0>Schwert</input>
+                <input type="radio" name="Weapon" value="Pistole" weight=4.0>Pistole</input>
+                <input type="radio" name="Weapon" value="Messer" weight=1.0>Messer</input>
+                <input type="radio" name="Weapon" value="Schlagstock" weight=3.0>Schlagstock</input>
+
+                <label for="Doppel-Schwert">Beidseitige Waffen:</label>
+                <input type="radio" name="Weapon" value="Doppel-Schwert" weight=4.0>Doppel-Schwert</input>
+                <input type="radio" name="Weapon" value="Schleuder" weight=2.0>Schleuder</input>
+                <input type="radio" name="Weapon" value="Doppel-Messer" weight=2.0>Doppel-Messer</input>
+                <input type="radio" name="Weapon" value="Bazooka" weight=7.0>Bazooka</input>
+
+                <!-- <label for="Weapon">Weapon: </label>
+                <select name="Weapon">
+                    <option value="Singlehanded">Einhändig</option>
+                    <option value="Twohanded">Beidhändig</option>
+                </select>
+
+                <label for="Singlehanded">Einhändige Waffen: </label>
+                <select name="Singlehanded">
+                        <option value="Schwert" weight=2.0>Schwert</option>
+                        <option value="Pistole" weight=4.0>Pistole</option>
+                        <option value="Messer" weight=1.0>Messer</option>
+                        <option value="Schlagstock" weight=3.0>Schlagstock</option>
+                </select>
+
+                <label for="Twohanded">Beidhändige Waffen: </label>
+                <select name="Twohanded">
+                        <option value="Doppelschwert" weight=4.0>Doppel-Schwert</option>
+                        <option value="Schleuder" weight=2.0>Schleuder</option>
+                        <option value="Doppelmesser" weight=2.0>Doppel-Messer</option>
+                        <option value="Bazooka" weight=7.0>Bazooka</option>
+                </select> -->
+
+                <label for="Clothing">Clothing: </label>
+                <select name="Clothing">
+                        <option value="Anzug" weight="1.5">Anzug</option>
+                        <option value="Abendkleid" weight="1.3">Abendkleid</option>
+                        <option value="Alltagskleidung" weight="0.7">Alltagskleidung</option>
+                        <option value="Bademode" weight="0.3">Bademode</option>
+                </select>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Personality</legend>
+                    <span>
+                        <label for="Intellect">Intellect: </label>
+                        0%
+                        <input type="range" name="Intellect" id="intellect" min="0" max="100" step="10" value="0">
+                        100%
+                    </span>
+
+                    <span>
+                        <label for="Strength">Strength: </label>
+                        0%
+                        <input type="range" name="Strength" id="strength" min="0" max="100" step="10" value="0">
+                        100%
+                    </span>
+
+                    <label for="Backstory">Backstory: </label>
+                    <textarea name="Backstory" rows="4" placeholder="write the backstory here"></textarea>
+
+            </fieldset>
+
+
+
+
+            <!-- <fieldset>
+                <legend>Amount</legend>
+                <span id="slider">
+                    <span>
+                        0.1 L 
+                        <input type="range" name="Amount" id="amount" min="0.1" max="1.0" step="0.1" value="0.1">
+                        1.0 L
+                    </span>
+                    <progress max="1.0" value="0.1"> </progress>
+                </span>
+            </fieldset> -->
+        </div>    
+    </form>
+
+    <div>
+        <h2>Your character</h2>
+        <div id="character">
+            ...
+        </div>
+        <button type="button">Send</button>
+    </div>
+
+</body>
+
+</html>
