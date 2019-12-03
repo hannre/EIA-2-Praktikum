@@ -1,24 +1,34 @@
+{
+        "Accessoires": [{"type": "select", "Items": 
+                                        [{"name": "Kette", "weight": 0.3},
+                                        {"name": "Ring", "weight": 0.2},
+                                        {"name": "Ohrringe", "weight": 0.3},
+                                        {"name": "Gürtel", "weight": 0.5},
+                                        {"name": "Handtasche", "weight": 1.5}
+                                        ]
+                        }
+                        ],
 
-/* 
+        "Singlehanded": [{"type": "select", "Items": 
+                                        [{"name": "Schwert", "weight": 2.0},
+                                        {"name": "Pistole", "weight": 4.0},
+                                        {"name": "Messer", "weight": 1.0},
+                                        {"name": "Schlagstock", "weight": 3.0}
+                                    ]
+                        }
+                        ],
 
-{        "Drink": [
-            { "name": "Pina Colada", "price": 25.00 } ,
-            { "name": "Caipirinha", "price": 30.00 } ,
-            { "name": "Bloody Mary", "price": 21.00 } 
-        ],
-        "Extras": [
-            { "name": "Ice", "price": 0.50 } ,
-            { "name": "Lemon", "price": 0.20 } ,
-            { "name": "Orange", "price": 0.15 } ,
-            { "name": "Mint", "price": 0.30 } 
-        ],
-        "Container": [
-            { "name": "Slim", "price": 3.50 } ,
-            { "name": "Wide", "price": 4.00 } , 
-            { "name": "Papercup", "price": 0.50 } ,
-            { "name": "Plasticbag", "price": 0.05 }
-        ]
-    
+        "Twohanded": [{"type": "select", "Items": 
+                                        [{"name": "Doppel-Schwert", "weight": 4.0},
+                                        {"name": "Schleuder", "weight": 2.0},
+                                        {"name": "Doppel-Messer", "weight": 1.0},
+                                        {"name": "Bazooka", "weight": 7.0}
+                                        ]
+                        }
+                    ]
+                                       
 }
+                    
+                    
+                    
 
- */

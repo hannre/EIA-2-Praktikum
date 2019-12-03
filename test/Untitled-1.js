@@ -1,6 +1,7 @@
 "use strict";
 var Boxes;
 (function (Boxes) {
+    console.log("hallo");
     let n = 5;
     let color;
     let x = 0;

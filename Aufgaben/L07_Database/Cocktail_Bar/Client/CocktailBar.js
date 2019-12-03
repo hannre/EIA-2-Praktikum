@@ -1,14 +1,16 @@
 "use strict";
-var L05_CocktailBar;
-(function (L05_CocktailBar) {
+var L07_CocktailBar;
+(function (L07_CocktailBar) {
     window.addEventListener("load", handleLoad);
+    let form;
+    let url = "http://localhost:5001/";
     async function handleLoad(_event) {
         console.log("Test");
         let response = await fetch("Data.json");
         let offer = await response.text();
         let data = JSON.parse(offer);
-        L05_CocktailBar.generateContent(data);
-        let form = document.querySelector("div#form");
+        L07_CocktailBar.generateContent(data);
+        form = document.querySelector("form");
         let slider = document.querySelector("input#amount");
         let submit = document.querySelector("button[type=button]");
         let reset = document.querySelector("button[type=reset");
@@ -25,11 +27,12 @@ var L05_CocktailBar;
     }
     async function sendOrder(_event) {
         console.log("SendOrder");
-        let formData = new FormData(document.querySelector("form"));
+        let formData = new FormData(form);
         // tslint:disable-next-line: no-any
         let query = new URLSearchParams(formData);
-        await fetch("index.html?" + query.toString());
-        alert("Order sent!");
+        let response = await fetch(url + "?" + query.toString());
+        let responseText = await response.text();
+        alert(responseText);
     }
     function handleChange(_event) {
         displayOrder();
@@ -71,5 +74,5 @@ var L05_CocktailBar;
         let amount = _event.target.value;
         progress.value = parseFloat(amount); // parseFloat--> string wird als Zahlenwert interpretiert
     }
-})(L05_CocktailBar || (L05_CocktailBar = {}));
+})(L07_CocktailBar || (L07_CocktailBar = {}));
 //# sourceMappingURL=CocktailBar.js.map

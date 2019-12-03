@@ -3,9 +3,12 @@ var L05_CharacterEditor;
 (function (L05_CharacterEditor) {
     //-----Alter, TotalGewicht kann ich nicht anzeigen lassen-----
     window.addEventListener("load", handleLoad);
-    function handleLoad(_event) {
+    async function handleLoad(_event) {
         console.log("Test");
-        //generateContent(data);
+        let response = await fetch("Data.json");
+        let content = await response.text();
+        let data = JSON.parse(content);
+        L05_CharacterEditor.generateContent(data);
         let form = document.querySelector("div#form");
         form.addEventListener("change", handleChange);
     }
@@ -48,9 +51,9 @@ var L05_CharacterEditor;
         let größe2 = größe * größe;
         let bmi = gewicht / größe2;
         übersicht.innerHTML += "Der BMI beträgt: " + bmi.toFixed(2) + "<br>";
-        let accessoire = document.querySelector("select#accessoires");
+        //let accessoire: HTMLSelectElement = <HTMLSelectElement>document.querySelector("select#accessoires");
         //console.log(accessoire.weight);
-        console.log(accessoire.value);
+        //console.log(accessoire.value);
         //console.log(accessoire.getAttribute("weight");  // ich kann irgendwie nicht auf das Attribut "weight" zugreifen
         //let totalWeight: number = gewicht 
         let intellect = document.querySelector("input#intellect");

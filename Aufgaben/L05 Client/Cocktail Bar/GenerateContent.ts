@@ -52,7 +52,7 @@ namespace L05_CocktailBar {
         for (let item of _items) {
             
             let option: HTMLOptionElement = document.createElement("option");
-            //select.selectedOptions: HTMLCollectionOf<HTMLOptionElement>();
+            
             option.value = item.name;
             option.setAttribute("price", item.price.toFixed(2));
             select.name = _category;

@@ -5,10 +5,14 @@ namespace L05_CharacterEditor {
 
     window.addEventListener("load", handleLoad);
 
-    function handleLoad (_event: Event): void {
+    async function handleLoad (_event: Event): Promise<void> {
         console.log("Test");
 
-        //generateContent(data);
+        let response: Response = await fetch("Data.json");
+        let content: string = await response.text();
+        let data: Data = JSON.parse(content);
+
+        generateContent(data);
 
 
         let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#form");
@@ -74,11 +78,11 @@ namespace L05_CharacterEditor {
         übersicht.innerHTML += "Der BMI beträgt: " + bmi.toFixed(2) + "<br>";
 
         
-        let accessoire: HTMLSelectElement = <HTMLSelectElement>document.querySelector("select#accessoires");
+        //let accessoire: HTMLSelectElement = <HTMLSelectElement>document.querySelector("select#accessoires");
         
         
         //console.log(accessoire.weight);
-        console.log(accessoire.value);
+        //console.log(accessoire.value);
         //console.log(accessoire.getAttribute("weight");  // ich kann irgendwie nicht auf das Attribut "weight" zugreifen
 
         //let totalWeight: number = gewicht 

@@ -1,5 +1,7 @@
-namespace L05_CocktailBar {
+ namespace L07_CocktailBar {
     window.addEventListener("load", handleLoad);
+    let form: HTMLFormElement;
+    let url: string = "http://localhost:5001/"; 
 
     async function handleLoad (_event: Event): Promise<void> {
         console.log("Test");
@@ -10,7 +12,7 @@ namespace L05_CocktailBar {
         generateContent(data);
 
 
-        let form: HTMLDivElement = <HTMLDivElement>document.querySelector("div#form");
+        form = <HTMLFormElement>document.querySelector("form");
         let slider: HTMLInputElement = <HTMLInputElement>document.querySelector("input#amount");
         let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=button]");
         let reset: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=reset");
@@ -36,11 +38,12 @@ namespace L05_CocktailBar {
     
     async function sendOrder(_event: MouseEvent): Promise<void> {
         console.log("SendOrder");
-        let formData: FormData = new FormData(<HTMLFormElement>document.querySelector("form"));
+        let formData: FormData = new FormData(form);
         // tslint:disable-next-line: no-any
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-        await fetch("index.html?" + query.toString());
-        alert("Order sent!");
+        let response: Response = await fetch(url + "?" + query.toString());
+        let responseText: string = await response.text();
+        alert(responseText);
     }
 
 

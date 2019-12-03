@@ -1,6 +1,6 @@
 "use strict";
-var L05_CocktailBar;
-(function (L05_CocktailBar) {
+var L07_CocktailBar;
+(function (L07_CocktailBar) {
     function generateContent(_data) {
         console.log(_data);
         for (let category in _data) {
@@ -28,13 +28,14 @@ var L05_CocktailBar;
             console.log(fieldset);
         }
     }
-    L05_CocktailBar.generateContent = generateContent;
+    L07_CocktailBar.generateContent = generateContent;
     function createSelect(_items, _category) {
         //console.log("createSelect funktioniert!");
         let group = document.createElement("div");
         let select = document.createElement("select");
         for (let item of _items) {
             let option = document.createElement("option");
+            //select.selectedOptions: HTMLCollectionOf<HTMLOptionElement>();
             option.value = item.name;
             option.setAttribute("price", item.price.toFixed(2));
             select.name = _category;
@@ -85,5 +86,5 @@ var L05_CocktailBar;
         }
         return group;
     }
-})(L05_CocktailBar || (L05_CocktailBar = {}));
+})(L07_CocktailBar || (L07_CocktailBar = {}));
 //# sourceMappingURL=GenerateContent.js.map
