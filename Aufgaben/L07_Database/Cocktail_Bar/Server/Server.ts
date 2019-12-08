@@ -1,3 +1,5 @@
+
+
 import * as Http from "http";    // hier: importiere mir alles (*) aus dem Module http und nenne es Http
 import * as Url from "url";     // Module von node werden über das import-Statement eingebunden
 import * as Mongo from "mongodb";

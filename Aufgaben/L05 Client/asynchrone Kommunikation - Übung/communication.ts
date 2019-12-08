@@ -1,3 +1,5 @@
+namespace L05_Client_asyncComm {
+
 window.addEventListener("load", handleLoad);
 
 function handleLoad (): void {
@@ -19,4 +21,6 @@ async function communicate(_url: RequestInfo): Promise<void> {
 
     let inhalt: string = await response.text();
     console.log("Der Inhalt lautet " + inhalt);
+}
+
 }
