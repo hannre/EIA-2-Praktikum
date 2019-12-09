@@ -10,12 +10,66 @@ var L08_Canvas_Alley;
             return;
         crc2 = canvas.getContext("2d");
         let horizon = crc2.canvas.height * golden;
+        let streetWidthBack = 100;
+        let streetWidthFront = 600;
+        let tressOffsetBack = 15;
+        let treesOffsetFront = 100;
+        let posMountain = { x: 0, y: horizon };
+        let posStreet = { x: crc2.canvas.width / 2, y: horizon };
+        let posTreesStart = { x: posStreet.x - streetWidthBack / 2 - tressOffsetBack, y: horizon }; // Start bei (285, 372)
+        let posTreesEnd = { x: crc2.canvas.width / 2 - streetWidthFront / 2 - treesOffsetFront, y: crc2.canvas.height }; // Ende bei (0,600)
         drawBackground();
         drawSun({ x: 100, y: 75 });
         drawCloud({ x: 500, y: 125 }, { x: 250, y: 75 });
-        drawStreet({ x: crc2.canvas.width / 2, y: horizon }, 100, 600);
-        drawMountains({ x: 0, y: horizon }, 75, 200, "grey", "white");
-        drawMountains({ x: 0, y: horizon }, 50, 150, "grey", "lightgrey");
+        drawStreet(posStreet, streetWidthBack, streetWidthFront);
+        drawMountains(posMountain, 75, 200, "grey", "white");
+        drawMountains(posMountain, 50, 150, "grey", "lightgrey");
+        drawTrees(8, posTreesStart, posTreesEnd, 0.1, 0.37, 1.4);
+        posTreesStart.x = posStreet.x + streetWidthBack / 2 + tressOffsetBack; // Start bei (465, 372)
+        posTreesEnd.x = posTreesEnd.x + streetWidthFront + 2 * treesOffsetFront; // Ende bei (800, 600)
+        drawTrees(8, posTreesStart, posTreesEnd, 0.1, 0.37, 1.4);
+    }
+    function drawTrees(_nTrees, _posStart, _posEnd, _minScale, _stepPos, _stepScale) {
+        console.log("Trees", _posStart, _posEnd);
+        let transform = crc2.getTransform();
+        let step = {
+            x: (_posEnd.x - _posStart.x) * _stepPos,
+            y: (_posEnd.y - _posStart.y) * _stepPos
+        };
+        crc2.translate(_posStart.x, _posStart.y);
+        crc2.scale(_minScale, _minScale);
+        do {
+            drawTree();
+            crc2.translate(step.x, step.y);
+            crc2.scale(_stepScale, _stepScale);
+        } while (--_nTrees > 0);
+        crc2.setTransform(transform);
+    }
+    function drawTree() {
+        console.log("Tree");
+        let nBranches = 50;
+        let maxRadius = 60;
+        let branch = new Path2D();
+        branch.arc(0, 0, maxRadius, 0, 2 * Math.PI);
+        crc2.fillStyle = "brown";
+        crc2.fillRect(0, 0, 20, -200);
+        crc2.save();
+        crc2.translate(0, -120);
+        do {
+            let y = Math.random() * 350;
+            let size = 1 - y / 700;
+            let x = (Math.random() - 0.5) * 2 * maxRadius;
+            crc2.save();
+            crc2.translate(0, -y);
+            crc2.scale(size, size);
+            crc2.translate(x, 0);
+            let colorAngle = 120 - Math.random() * 60; // Grad-Zahl im HSL-Farbmodell  (120-zufällige Zahl zw. 0 und 60 = Grad-Zahl zw. 60 und 120 --> Farbe zw. Gelb und Grün)
+            let color = "HSLA(" + colorAngle + ", 50%, 30%, 0.5)";
+            crc2.fillStyle = color;
+            crc2.fill(branch);
+            crc2.restore();
+        } while (--nBranches > 0);
+        crc2.restore();
     }
     function drawBackground() {
         console.log("Background");
