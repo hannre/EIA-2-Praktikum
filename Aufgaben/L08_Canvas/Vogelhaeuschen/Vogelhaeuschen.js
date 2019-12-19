@@ -1,6 +1,6 @@
 "use strict";
-var L08_Canvas_Alley;
-(function (L08_Canvas_Alley) {
+var L08_Canvas_Vogelhaeuschen;
+(function (L08_Canvas_Vogelhaeuschen) {
     window.addEventListener("load", handleLoad);
     let crc2; // crc2 = CanvasRenderingContext2d
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
@@ -58,7 +58,6 @@ var L08_Canvas_Alley;
         crc2.lineWidth = 2;
         crc2.stroke(bird);
         crc2.stroke(bird2);
-        bird.arc(x, y, r, 0, 1 * Math.PI, true);
         // --- Vogel 2
         let bird3 = new Path2D();
         x = 395;
@@ -231,5 +230,5 @@ var L08_Canvas_Alley;
         crc2.fill();
         crc2.restore();
     }
-})(L08_Canvas_Alley || (L08_Canvas_Alley = {}));
+})(L08_Canvas_Vogelhaeuschen || (L08_Canvas_Vogelhaeuschen = {}));
 //# sourceMappingURL=Vogelhaeuschen.js.map

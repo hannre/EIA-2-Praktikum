@@ -1,138 +1,8 @@
- namespace L08_Canvas_Vogelhaeuschen {
-
-    interface Vector {
-        x: number;
-        y: number;
-    }
-
-    window.addEventListener("load", handleLoad);
-    let crc2: CanvasRenderingContext2D;  // crc2 = CanvasRenderingContext2d
-    //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
-
-    function handleLoad(_event: Event): void {
-        let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
-        if (!canvas)
-            return;
-
-        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-
-        //let horizon: number = crc2.canvas.height * golden;
-        /* let streetWidthBack: number = 100;
-        let streetWidthFront: number = 600;
-        let tressOffsetBack: number = 15;
-        let treesOffsetFront: number = 100; */
-
-
-        let posMountain: Vector = {x: 0, y: 300};
-        /* let posStreet: Vector = {x: crc2.canvas.width / 2, y: horizon};
-        let posTreesStart: Vector = {x: posStreet.x - streetWidthBack / 2 - tressOffsetBack, y: horizon}; // Start bei (285, 372)
-        let posTreesEnd: Vector = {x: crc2.canvas.width / 2 - streetWidthFront / 2 - treesOffsetFront, y: crc2.canvas.height}; // Ende bei (0,600) */
+namespace L09_Classes_Vogelhaeuschen {
 
 
 
-        drawBackground();
-        drawSun({x: 100, y: 75});
-        drawCloud({x: 500, y: 125}, {x: 250, y: 75});
-        drawMountains(posMountain, 75, 200, "grey", "white");    
-        drawMountains(posMountain, 50, 150, "grey", "lightgrey");
-        drawTree();
-        drawSnowman();
-        drawHouse();
-        drawSnowflake();
-        drawBirds();
-        drawBirdOnHouse();
-        
-
-    }
-
-    function drawSnowflake(): void {
-        console.log("Snowflake");
-
-        let nSnowflake: number = 100; 
-        let r: number = 5;
-
-        for (let drawn: number = 0; drawn < nSnowflake; drawn++) {
-            let snowflake: Path2D = new Path2D();
-            let x: number = Math.random() * 800;
-            let y: number = Math.random() * 600;
-
-            
-            snowflake.arc(x, y, r, 0, 2 * Math.PI);
-            crc2.fillStyle = "white";
-            crc2.fill(snowflake);
-        }
-
-    }
-    
-    function drawBirdOnHouse(): void {
-        console.log("Bird on house");
-
-        let r: number = 10;
-
-        // --- Vogel 1
-        let bird: Path2D = new Path2D();
-        let x: number = 424;
-        let y: number = 420;
-        bird.arc(x, y, r, 0, 1 * Math.PI, true);
-
-        let bird2: Path2D = new Path2D();
-        
-        let newX: number = x + (2 * r);
-        bird2.arc(newX, y, r, 0, 1 * Math.PI, true);
-
-        crc2.fillStyle = "black";
-        crc2.lineWidth = 2;
-        crc2.stroke(bird);
-        crc2.stroke(bird2);
-
-
-        // --- Vogel 2
-
-        let bird3: Path2D = new Path2D();
-        x = 395;
-        y = 403;
-
-        bird3.arc(x, y, r, 0, 1 * Math.PI, true);
-
-        let bird4: Path2D = new Path2D();
-        
-        newX = x + (2 * r);
-        bird4.arc(newX, y, r, 0, 1 * Math.PI, true);
-
-        crc2.fillStyle = "black";
-        crc2.lineWidth = 2;
-        crc2.stroke(bird3);
-        crc2.stroke(bird4);
-    }
-
-    function drawBirds(): void {
-        console.log("Birds");
-
-        let nBird: number = 18; 
-        let r: number = 10;
-
-        for (let drawn: number = 0; drawn < nBird; drawn++) {
-            let bird: Path2D = new Path2D();
-            let x: number = Math.random() * 800;
-            let y: number = Math.random() * 600;
-
-            
-            bird.arc(x, y, r, 0, 1 * Math.PI, true);
-
-            let bird2: Path2D = new Path2D();
-            let newX: number = x + (2 * r);
-            bird2.arc(newX, y, r, 0, 1 * Math.PI, true);
-
-            crc2.fillStyle = "black";
-            crc2.lineWidth = 2;
-            crc2.stroke(bird);
-            crc2.stroke(bird2);
-        }
-       
-    }
-
-
-    function drawHouse(): void {
+    export function drawHouse(): void {
         console.log("House");
 
         crc2. fillStyle = "HSL(30, 70%, 30%)";   // --> Vogelhaeuschen-Stamm
@@ -150,10 +20,10 @@
     }
 
 
-    function drawSnowman(): void {
+    export function drawSnowman(): void {
         console.log("Snow");
 
-        let x: number = 300 - (Math.random() * 250);
+        //let x: number = 300 - (Math.random() * 250);
 
         let snowBall1: Path2D = new Path2D();
         let r1: number = 50;
@@ -163,7 +33,7 @@
         let ySecond: number = 500 - (r1 + r2);
         let yThird: number = ySecond - (r2 + r3);
 
-        snowBall1.arc(x, 500, r1, 0, 2 * Math.PI);
+        snowBall1.arc(180, 500, r1, 0, 2 * Math.PI);
         crc2.fillStyle = "white";
         crc2.fill(snowBall1);
         crc2.fillStyle = "black";
@@ -171,7 +41,7 @@
 
         let snowBall2: Path2D = new Path2D();
 
-        snowBall2.arc(x, ySecond, r2, 0, 2 * Math.PI);
+        snowBall2.arc(180, ySecond, r2, 0, 2 * Math.PI);
         crc2.fillStyle = "white";
         crc2.fill(snowBall2);
         crc2.fillStyle = "black";
@@ -179,7 +49,7 @@
 
         let snowBall3: Path2D = new Path2D();
 
-        snowBall3.arc(x, yThird, r3, 0, 2 * Math.PI);
+        snowBall3.arc(180, yThird, r3, 0, 2 * Math.PI);
         crc2.fillStyle = "white";
         crc2.fill(snowBall3);
         crc2.fillStyle = "black";
@@ -187,18 +57,18 @@
     }
 
 
-    function drawTree (): void {
+    export function drawTree (): void {
         console.log("Tree");
         let transform: DOMMatrix = crc2.getTransform();
     
-        let x: number = Math.random() * 800;
+        // let x: number = Math.random() * 800;
         crc2. fillStyle = "HSL(30, 70%, 40%)";   // --> Baum-Stamm
-        crc2. fillRect(x, 450, 20, -100);
+        crc2. fillRect(600, 450, 20, -100);
 
         let nBranches: number = 60;
         let maxRadius: number = 25;
         let branch: Path2D = new Path2D();
-        branch.arc(x, 500, maxRadius, 0, 2 * Math.PI);
+        branch.arc(600, 500, maxRadius, 0, 2 * Math.PI);
 
         crc2.save();
         crc2.translate(0, -120);
@@ -234,7 +104,7 @@
 
 
 
-    function drawBackground(): void {
+    export function drawBackground(): void {
             console.log("Background");
 
             let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
@@ -247,7 +117,7 @@
             crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         }
 
-    function drawSun(_position: Vector): void {
+    export function drawSun(_position: VectorOld): void {
             console.log("Sun", _position);
 
             let r1: number = 30;
@@ -266,7 +136,7 @@
 
         }
 
-    function drawCloud(_position: Vector, _size: Vector): void {
+    export function drawCloud(_position: VectorOld, _size: VectorOld): void {
             console.log("Cloud", _position, _size);
 
             let nParticles: number = 30;
@@ -297,7 +167,7 @@
     }
 
 
-    function drawMountains(_position: Vector, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
+    export function drawMountains(_position: VectorOld, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
         console.log("Mountains");
 
         let stepMin: number = 50;
@@ -332,9 +202,5 @@
 
         crc2.restore();
     }
-
-
-
-
 
 }
