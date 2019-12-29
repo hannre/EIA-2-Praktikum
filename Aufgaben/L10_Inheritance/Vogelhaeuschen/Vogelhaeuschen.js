@@ -3,9 +3,7 @@ var L10_Inheritance_Vogelhaeuschen;
 (function (L10_Inheritance_Vogelhaeuschen) {
     window.addEventListener("load", handleLoad);
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
-    let snowflakes = [];
-    let birds = [];
-    let standBirds = [];
+    let moveables = [];
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)
@@ -33,7 +31,7 @@ var L10_Inheritance_Vogelhaeuschen;
         for (let i = 0; i < nSnowflake; i++) {
             // let snowflake: Path2D = new Path2D();
             let snowflake = new L10_Inheritance_Vogelhaeuschen.Snowflake();
-            snowflakes.push(snowflake);
+            moveables.push(snowflake);
         }
     }
     function drawBirdOnGround() {
@@ -41,7 +39,7 @@ var L10_Inheritance_Vogelhaeuschen;
         let nBird = 10;
         for (let i = 0; i < nBird; i++) {
             let standBird = new L10_Inheritance_Vogelhaeuschen.StandBird();
-            standBirds.push(standBird);
+            moveables.push(standBird);
         }
     }
     /* function drawBirdOnHouse(): void {
@@ -89,24 +87,17 @@ var L10_Inheritance_Vogelhaeuschen;
         let nBird = 10;
         for (let i = 0; i < nBird; i++) {
             let bird = new L10_Inheritance_Vogelhaeuschen.Bird();
-            birds.push(bird);
+            moveables.push(bird);
         }
     }
     function update(_backgroundData) {
-        console.log("Update!");
+        //console.log("Update!");
         L10_Inheritance_Vogelhaeuschen.crc2.putImageData(_backgroundData, 0, 0);
-        for (let snowflake of snowflakes) {
-            snowflake.move(1);
-            snowflake.draw();
+        for (let moveable of moveables) {
+            moveable.move();
+            moveable.draw();
         }
-        for (let bird of birds) {
-            bird.move(1);
-            bird.draw();
-        }
-        for (let standBird of standBirds) {
-            standBird.move(1);
-            standBird.draw();
-        }
+        console.log("Moveable length: " + moveables.length);
     }
 })(L10_Inheritance_Vogelhaeuschen || (L10_Inheritance_Vogelhaeuschen = {}));
 //# sourceMappingURL=Vogelhaeuschen.js.map

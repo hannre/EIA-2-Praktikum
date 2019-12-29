@@ -1,7 +1,7 @@
 "use strict";
-var L10_Classes_Asteroids;
-(function (L10_Classes_Asteroids) {
-    L10_Classes_Asteroids.shapeAsteroids = [
+var L10_Inheritance_Asteroids;
+(function (L10_Inheritance_Asteroids) {
+    L10_Inheritance_Asteroids.shapeAsteroids = [
         [
             [30, 1], [50, 15], [71, 1], [88, 31], [67, 40], [84, 63], [59, 93], [30, 79], [19, 87], [2, 63], [15, 43], [8, 20]
         ],
@@ -16,10 +16,10 @@ var L10_Classes_Asteroids;
         ]
     ]; //  --> 4 Types wegen 4 Arrays
     function createPaths() {
-        L10_Classes_Asteroids.asteroidPaths = createAsteroidPaths(L10_Classes_Asteroids.shapeAsteroids);
-        L10_Classes_Asteroids.ufoPath = createUfoPath();
+        L10_Inheritance_Asteroids.asteroidPaths = createAsteroidPaths(L10_Inheritance_Asteroids.shapeAsteroids);
+        L10_Inheritance_Asteroids.ufoPath = createUfoPath();
     }
-    L10_Classes_Asteroids.createPaths = createPaths;
+    L10_Inheritance_Asteroids.createPaths = createPaths;
     function createAsteroidPaths(_shapes) {
         let paths = [];
         for (let type of _shapes) {
@@ -58,5 +58,5 @@ var L10_Classes_Asteroids;
         path.closePath();
         return path;
     }
-})(L10_Classes_Asteroids || (L10_Classes_Asteroids = {}));
+})(L10_Inheritance_Asteroids || (L10_Inheritance_Asteroids = {}));
 //# sourceMappingURL=Paths.js.map

@@ -1,13 +1,15 @@
 namespace L10_Inheritance_Vogelhaeuschen {
 
-    export class Snowflake {
+    export class Snowflake extends Moveable {
         position: Vector;
         velocity: Vector;
-        size: number;
+        
 
 
 
-        constructor () {  
+        constructor (_position?: Vector) {  
+            super();
+
             //console.log("Snowflake constructor");
         
             let x: number = 800 * Math.random();
@@ -19,7 +21,7 @@ namespace L10_Inheritance_Vogelhaeuschen {
             //this.velocity.random(100, 200);   // 100 bzw. 200 Pixel pro Sekunde
         }
 
-        move (_timleslice: number): void {
+        move (): void {
             //console.log("Es bewegt sich!");
 
             //let newMove: Vector = new Vector (this.velocity.x, this.velocity.y);

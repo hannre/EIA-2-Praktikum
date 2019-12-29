@@ -1,20 +1,20 @@
 "use strict";
-var L10_Classes_Asteroids;
-(function (L10_Classes_Asteroids) {
+var L10_Inheritance_Asteroids;
+(function (L10_Inheritance_Asteroids) {
     window.addEventListener("load", handleLoad);
-    L10_Classes_Asteroids.linewidth = 2;
+    L10_Inheritance_Asteroids.linewidth = 2;
     let moveables = []; // = []  --> am Anfang ist Array leer
     function handleLoad(_event) {
         console.log("Asteroids starting");
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
-        L10_Classes_Asteroids.crc2 = canvas.getContext("2d");
-        L10_Classes_Asteroids.crc2.fillStyle = "black";
-        L10_Classes_Asteroids.crc2.strokeStyle = "white";
-        L10_Classes_Asteroids.crc2.lineWidth = L10_Classes_Asteroids.linewidth;
-        L10_Classes_Asteroids.createPaths();
-        console.log("Asteroids paths: ", L10_Classes_Asteroids.asteroidPaths);
+        L10_Inheritance_Asteroids.crc2 = canvas.getContext("2d");
+        L10_Inheritance_Asteroids.crc2.fillStyle = "black";
+        L10_Inheritance_Asteroids.crc2.strokeStyle = "white";
+        L10_Inheritance_Asteroids.crc2.lineWidth = L10_Inheritance_Asteroids.linewidth;
+        L10_Inheritance_Asteroids.createPaths();
+        console.log("Asteroids paths: ", L10_Inheritance_Asteroids.asteroidPaths);
         createAsteroids(5);
         // create Ship();
         canvas.addEventListener("mousedown", shootProjectile);
@@ -38,15 +38,15 @@ var L10_Classes_Asteroids;
     }
     function shootProjectile(_event) {
         console.log("Shoot projectile");
-        let origin = new L10_Classes_Asteroids.Vector(_event.clientX - L10_Classes_Asteroids.crc2.canvas.offsetLeft, _event.clientY - L10_Classes_Asteroids.crc2.canvas.offsetTop);
-        let velocity = new L10_Classes_Asteroids.Vector(0, 0);
+        let origin = new L10_Inheritance_Asteroids.Vector(_event.clientX - L10_Inheritance_Asteroids.crc2.canvas.offsetLeft, _event.clientY - L10_Inheritance_Asteroids.crc2.canvas.offsetTop);
+        let velocity = new L10_Inheritance_Asteroids.Vector(0, 0);
         velocity.random(100, 100);
-        let projectile = new L10_Classes_Asteroids.Projectile(origin, velocity);
+        let projectile = new L10_Inheritance_Asteroids.Projectile(origin, velocity);
         moveables.push(projectile);
     }
     function shootLaser(_event) {
         console.log("Shoot laser");
-        let hotspot = new L10_Classes_Asteroids.Vector(_event.clientX - L10_Classes_Asteroids.crc2.canvas.offsetLeft, _event.clientY - L10_Classes_Asteroids.crc2.canvas.offsetTop);
+        let hotspot = new L10_Inheritance_Asteroids.Vector(_event.clientX - L10_Inheritance_Asteroids.crc2.canvas.offsetLeft, _event.clientY - L10_Inheritance_Asteroids.crc2.canvas.offsetTop);
         let asteroidHit = getAsteroidHit(hotspot);
         console.log(asteroidHit);
         if (asteroidHit) {
@@ -55,7 +55,7 @@ var L10_Classes_Asteroids;
     }
     function getAsteroidHit(_hotspot) {
         for (let moveable of moveables) {
-            if (moveable instanceof L10_Classes_Asteroids.Asteroid && moveable.isHit(_hotspot))
+            if (moveable instanceof L10_Inheritance_Asteroids.Asteroid && moveable.isHit(_hotspot))
                 return moveable; // wenn Asteroid getroffen wird "asteroid" zurückgegeben, ansonsten "null"
         }
         return null;
@@ -63,7 +63,7 @@ var L10_Classes_Asteroids;
     function breakAsteroid(_asteroid) {
         if (_asteroid.size > 0.3) {
             for (let i = 0; i < 2; i++) { // bau zwei neue Elemente
-                let fragment = new L10_Classes_Asteroids.Asteroid(_asteroid.size / 2, _asteroid.position);
+                let fragment = new L10_Inheritance_Asteroids.Asteroid(_asteroid.size / 2, _asteroid.position);
                 fragment.velocity.add(_asteroid.velocity); // neue velocity plus velocity des alten Asteroid
                 moveables.push(fragment);
             }
@@ -73,13 +73,13 @@ var L10_Classes_Asteroids;
     function createAsteroids(_nAsteroids) {
         console.log("create asteroids");
         for (let i = 0; i < _nAsteroids; i++) {
-            let asteroid = new L10_Classes_Asteroids.Asteroid(1.0);
+            let asteroid = new L10_Inheritance_Asteroids.Asteroid(1.0);
             moveables.push(asteroid);
         }
     }
     function update() {
         //console.log("Update");
-        L10_Classes_Asteroids.crc2.fillRect(0, 0, L10_Classes_Asteroids.crc2.canvas.width, L10_Classes_Asteroids.crc2.canvas.height); // --> clear Background
+        L10_Inheritance_Asteroids.crc2.fillRect(0, 0, L10_Inheritance_Asteroids.crc2.canvas.width, L10_Inheritance_Asteroids.crc2.canvas.height); // --> clear Background
         for (let moveable of moveables) {
             moveable.move(1 / 50);
             moveable.draw();
@@ -95,5 +95,5 @@ var L10_Classes_Asteroids;
                 moveables.splice(i, 1);
         }
     }
-})(L10_Classes_Asteroids || (L10_Classes_Asteroids = {}));
+})(L10_Inheritance_Asteroids || (L10_Inheritance_Asteroids = {}));
 //# sourceMappingURL=Main.js.map

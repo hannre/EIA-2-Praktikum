@@ -31,6 +31,10 @@ namespace L10_Inheritance_Vogelhaeuschen {
         this.scale(length);
         }
 
+        copy(): Vector {
+            return new Vector (this.x, this.y);
+        }
+
     }
 
     

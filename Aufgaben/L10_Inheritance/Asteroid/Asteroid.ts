@@ -1,4 +1,4 @@
-namespace L10_Classes_Asteroids {
+namespace L10_Inheritance_Asteroids {
 
     export class Asteroid extends Moveable {  // extends --> Asteroid ist eine Erweiterung von Moveable, also eine Subklasse der Superklasse Moveable
     position: Vector;

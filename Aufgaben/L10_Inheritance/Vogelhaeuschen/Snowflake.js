@@ -1,8 +1,9 @@
 "use strict";
 var L10_Inheritance_Vogelhaeuschen;
 (function (L10_Inheritance_Vogelhaeuschen) {
-    class Snowflake {
-        constructor() {
+    class Snowflake extends L10_Inheritance_Vogelhaeuschen.Moveable {
+        constructor(_position) {
+            super();
             //console.log("Snowflake constructor");
             let x = 800 * Math.random();
             let y = 600 * Math.random();
@@ -10,7 +11,7 @@ var L10_Inheritance_Vogelhaeuschen;
             this.velocity = new L10_Inheritance_Vogelhaeuschen.Vector(0, 3);
             //this.velocity.random(100, 200);   // 100 bzw. 200 Pixel pro Sekunde
         }
-        move(_timleslice) {
+        move() {
             //console.log("Es bewegt sich!");
             //let newMove: Vector = new Vector (this.velocity.x, this.velocity.y);
             //newMove.scale(_timleslice);

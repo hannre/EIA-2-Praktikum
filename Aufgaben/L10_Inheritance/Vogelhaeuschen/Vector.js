@@ -23,6 +23,9 @@ var L10_Inheritance_Vogelhaeuschen;
             this.set(Math.cos(direction), Math.sin(direction));
             this.scale(length);
         }
+        copy() {
+            return new Vector(this.x, this.y);
+        }
     }
     L10_Inheritance_Vogelhaeuschen.Vector = Vector;
 })(L10_Inheritance_Vogelhaeuschen || (L10_Inheritance_Vogelhaeuschen = {}));

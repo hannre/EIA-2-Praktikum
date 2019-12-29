@@ -1,6 +1,6 @@
 namespace L10_Inheritance_Vogelhaeuschen {
 
-    export class StandBird {
+    export class StandBird extends Moveable {
         position: Vector;
         velocity: Vector;
         size: number;
@@ -8,6 +8,8 @@ namespace L10_Inheritance_Vogelhaeuschen {
 
 
         constructor() {
+            super();
+
             //console.log("Snowflake constructor");
 
             let x: number = 800 * Math.random();
@@ -19,7 +21,7 @@ namespace L10_Inheritance_Vogelhaeuschen {
 
         }
 
-        move(_timleslice: number): void {
+        move(): void {
             //console.log("Es bewegt sich!");
 
             this.position.add(this.velocity);

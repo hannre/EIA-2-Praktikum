@@ -1,15 +1,16 @@
 "use strict";
 var L10_Inheritance_Vogelhaeuschen;
 (function (L10_Inheritance_Vogelhaeuschen) {
-    class Bird {
+    class Bird extends L10_Inheritance_Vogelhaeuschen.Moveable {
         constructor() {
+            super();
             //console.log("Snowflake constructor");
             let x = 800 * Math.random();
             let y = 130 * Math.random();
             this.position = new L10_Inheritance_Vogelhaeuschen.Vector(x, y);
             this.velocity = new L10_Inheritance_Vogelhaeuschen.Vector(1, 0);
         }
-        move(_timleslice) {
+        move() {
             //console.log("Es bewegt sich!");
             this.position.add(this.velocity);
             if (this.position.x > 800)

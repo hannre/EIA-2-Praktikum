@@ -9,9 +9,7 @@
     export let crc2: CanvasRenderingContext2D;  // crc2 = CanvasRenderingContext2d
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
 
-    let snowflakes: Snowflake[] = [];
-    let birds: Bird[] = [];
-    let standBirds: StandBird[] = [];
+    let moveables: Moveable[] = [];
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -55,7 +53,7 @@
         for (let i: number = 0; i < nSnowflake; i++) {
             // let snowflake: Path2D = new Path2D();
             let snowflake: Snowflake = new Snowflake();
-            snowflakes.push(snowflake);
+            moveables.push(snowflake);
             }
             
 
@@ -70,7 +68,7 @@
         for (let i: number = 0; i < nBird; i++) {
             
             let standBird: StandBird = new StandBird();
-            standBirds.push(standBird);
+            moveables.push(standBird);
 
         }
 
@@ -125,32 +123,24 @@
         for (let i: number = 0; i < nBird; i++) {
 
             let bird: Bird = new Bird();
-            birds.push(bird);
+            moveables.push(bird);
         }
        
     } 
 
 
     function update(_backgroundData: ImageData): void {
-        console.log("Update!");
+        //console.log("Update!");
 
         crc2.putImageData(_backgroundData, 0, 0);
 
-        for (let snowflake of snowflakes) {
-            snowflake.move(1);
-            snowflake.draw();
+        for (let moveable of moveables) {
+            moveable.move();
+            moveable.draw();
 
         }
 
-        for (let bird of birds) {
-            bird.move(1);
-            bird.draw();
-        }
-
-        for (let standBird of standBirds) {
-            standBird.move(1);
-            standBird.draw();
-        }
+        console.log("Moveable length: " + moveables.length);
 
 
     }
