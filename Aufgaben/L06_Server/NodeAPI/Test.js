@@ -11,7 +11,7 @@ var L06_NodeAPI;
     console.log(process.env.PORT);
     console.log(process.argv); //arg steht für Argument; siehe Terminal --> argv ist ein Array von Informationen
     process.addListener("exit", handleExit); //exit tritt ein wenn der Prozess beendet ist
-    function handleExit(_event) {
+    function handleExit(_code) {
         console.log("Tschüss!");
     }
     setTimeout(handleTimeout, 2000);

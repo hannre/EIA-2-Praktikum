@@ -109,7 +109,7 @@ pattern.lineTo(10, 10);
 
 pattern.stroke();
 
-crc2.fillStyle =  crc2.createPattern(pattern.canvas, "repeat"); // funktioniert trotz Fehlermeldung
+crc2.fillStyle =  <CanvasPattern>crc2.createPattern(pattern.canvas, "repeat");
 crc2.fillRect(100, 550, 200, 150);
 
 }

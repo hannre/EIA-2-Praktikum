@@ -9,7 +9,7 @@ var L09_Classes_Asteroids;
             else
                 this.position = new L09_Classes_Asteroids.Vector(0, 0);
             this.velocity = new L09_Classes_Asteroids.Vector(0, 0);
-            this.velocity.random(100, 200); // 100 bzw. 200 Pixel pro Sekunde
+            this.velocity.random(100, 200); // 100 bzw. 200 Pixel pro Sekunde --> zufällige Geschwindigkeit der Asteroiden
             this.type = Math.floor(Math.random() * 4);
             this.size = _size;
         }

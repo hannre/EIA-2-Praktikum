@@ -15,7 +15,7 @@ namespace L06_NodeAPI {
 
     process.addListener("exit", handleExit);   //exit tritt ein wenn der Prozess beendet ist
 
-    function handleExit(_event: Event): void {
+    function handleExit(_code: number): void {
         console.log("Tschüss!");
     }
 
