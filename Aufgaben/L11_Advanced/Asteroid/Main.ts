@@ -1,4 +1,4 @@
-namespace L10_Inheritance_Asteroids {
+namespace L11_Advanced_Asteroids {
 
     window.addEventListener("load", handleLoad);
 
@@ -27,39 +27,31 @@ namespace L10_Inheritance_Asteroids {
 
         createAsteroids(5);
         // create Ship();
+        createUfo();
     
-        canvas.addEventListener("mousedown", shootProjectile);
+        canvas.addEventListener("ufoShoots", handleUfoShot);
         canvas.addEventListener("mouseup", shootLaser);
         // canvas.addEventlistener("keypress", handleKeypress);
         // canvas.addEventlistener("mousemove", setHeading);
         
         window.setInterval(update, 20);    // timeslice steuern durch Angabe des Intervalls --> alle 20 frames pro Sekunde wird update aufgerufen
-        
-        /*  //Übung in Lektion L10_Inheritance bei Pol:
-        let m: Moveable = new Moveable();
-        let a: Moveable = new Asteroid(1);
-        let p: Moveable = new Projectile(new Vector(0, 0), new Vector(0, 0));
-
-        console.log(m);
-        console.log(a);
-        console.log(p);
-
-        let moveables: Moveable[] = [];
-        moveables.push(new Asteroid(1));
-        moveables.push(new Projectile(new Vector(0, 0), new Vector(0, 0)));
-        console.log(moveables); */
+    
     }
 
 
-    function shootProjectile(_event: MouseEvent): void {
+    function shootProjectile(_origin: Vector): void {
         console.log("Shoot projectile");
-        let origin: Vector = new Vector(_event.clientX - crc2.canvas.offsetLeft, _event.clientY - crc2.canvas.offsetTop);
-        let velocity: Vector = new Vector(0, 0);
-        velocity.random(100, 100);
-        let projectile: Projectile = new Projectile(origin, velocity);
+
+        let velocity: Vector = Vector.getRandom(100, 200);
+        let projectile: Projectile = new Projectile(_origin, velocity);
         moveables.push(projectile);
     }
 
+    function handleUfoShot(_event: Event): void {
+
+        let ufo: Ufo = (<CustomEvent>_event).detail.ufo;
+        shootProjectile(ufo.position);
+    }
 
     function shootLaser(_event: MouseEvent): void {
         console.log("Shoot laser");
@@ -100,6 +92,13 @@ namespace L10_Inheritance_Asteroids {
         }
     }
 
+    function createUfo(): void {
+        console.log("Create ufo");
+        let ufo: Ufo = new Ufo();
+        moveables.push(ufo);
+    }
+
+
     function update(): void {
         //console.log("Update");
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);   // --> clear Background
@@ -112,7 +111,7 @@ namespace L10_Inheritance_Asteroids {
         deleteExpandables();
 
         // ship.draw();
-        // handleCollision();
+        handleCollisions();
         console.log("Moveable length: " + moveables.length);
     }
 
@@ -121,6 +120,22 @@ namespace L10_Inheritance_Asteroids {
             if (moveables[i].expendable) // ist moveable an der Stelle expandable?
             moveables.splice(i, 1);
         }
+    }
+
+    function handleCollisions(): void {
+        for (let i: number = 0; i < moveables.length; i++)    // äußere Schleife: geht alle Moveables durch
+            for (let j: number = i + 1; j < moveables.length; j++) {  // innere Schleife: geht alle Moveables danach (nach dem aktuell überprüfenden Movable-Objekt) durch
+                let a: Moveable = moveables[i];  // das aktuell zu überprüfende Objekt
+                let b: Moveable = moveables[j];
+                if (a.isHitBy(b)) {
+                    a.hit();
+                    b.hit();
+                    
+                }
+                    
+
+            }
+
     }
 
 }
