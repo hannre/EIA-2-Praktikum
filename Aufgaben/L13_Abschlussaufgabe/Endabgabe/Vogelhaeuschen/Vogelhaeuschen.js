@@ -1,6 +1,8 @@
 "use strict";
-var L13_Abschlussaufgabe_Stand1;
-(function (L13_Abschlussaufgabe_Stand1) {
+var L13_Abschlussaufgabe;
+(function (L13_Abschlussaufgabe) {
+    let url = "https://hanre.herokuapp.com/";
+    console.log(url);
     window.addEventListener("load", handleLoad);
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
     let moveables = [];
@@ -8,17 +10,17 @@ var L13_Abschlussaufgabe_Stand1;
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
-        L13_Abschlussaufgabe_Stand1.crc2 = canvas.getContext("2d");
+        L13_Abschlussaufgabe.crc2 = canvas.getContext("2d");
         let posMountain = { x: 0, y: 300 };
-        L13_Abschlussaufgabe_Stand1.drawBackground();
-        L13_Abschlussaufgabe_Stand1.drawSun({ x: 100, y: 75 });
-        L13_Abschlussaufgabe_Stand1.drawCloud({ x: 500, y: 125 }, { x: 250, y: 75 });
-        L13_Abschlussaufgabe_Stand1.drawMountains(posMountain, 75, 200, "grey", "white");
-        L13_Abschlussaufgabe_Stand1.drawMountains(posMountain, 50, 150, "grey", "lightgrey");
-        L13_Abschlussaufgabe_Stand1.drawTree();
-        L13_Abschlussaufgabe_Stand1.drawSnowman();
-        L13_Abschlussaufgabe_Stand1.drawHouse();
-        let background = L13_Abschlussaufgabe_Stand1.crc2.getImageData(0, 0, 800, 600);
+        L13_Abschlussaufgabe.drawBackground();
+        L13_Abschlussaufgabe.drawSun({ x: 100, y: 75 });
+        L13_Abschlussaufgabe.drawCloud({ x: 500, y: 125 }, { x: 250, y: 75 });
+        L13_Abschlussaufgabe.drawMountains(posMountain, 75, 200, "grey", "white");
+        L13_Abschlussaufgabe.drawMountains(posMountain, 50, 150, "grey", "lightgrey");
+        L13_Abschlussaufgabe.drawTree();
+        L13_Abschlussaufgabe.drawSnowman();
+        L13_Abschlussaufgabe.drawHouse();
+        let background = L13_Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
         window.setInterval(update, 20, background);
         drawSnowflake();
         drawBirds();
@@ -30,7 +32,7 @@ var L13_Abschlussaufgabe_Stand1;
         let nSnowflake = 100;
         for (let i = 0; i < nSnowflake; i++) {
             // let snowflake: Path2D = new Path2D();
-            let snowflake = new L13_Abschlussaufgabe_Stand1.Snowflake();
+            let snowflake = new L13_Abschlussaufgabe.Snowflake();
             moveables.push(snowflake);
         }
     }
@@ -94,18 +96,18 @@ var L13_Abschlussaufgabe_Stand1;
         for (let i = 0; i < nBird; i++) {
             /*             let x: number = Math.random() * 800;
                         let y: number = Math.random() * 600; */
-            let bird = new L13_Abschlussaufgabe_Stand1.Bird();
+            let bird = new L13_Abschlussaufgabe.Bird();
             moveables.push(bird);
         }
     }
     function update(_backgroundData) {
         //console.log("Update!");
-        L13_Abschlussaufgabe_Stand1.crc2.putImageData(_backgroundData, 0, 0);
+        L13_Abschlussaufgabe.crc2.putImageData(_backgroundData, 0, 0);
         for (let moveable of moveables) {
             moveable.move();
             moveable.draw();
         }
         console.log("Moveable length: " + moveables.length);
     }
-})(L13_Abschlussaufgabe_Stand1 || (L13_Abschlussaufgabe_Stand1 = {}));
+})(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Vogelhaeuschen.js.map

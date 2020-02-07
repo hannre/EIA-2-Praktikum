@@ -1,43 +1,71 @@
-"use strict";
-var L13_Abschlussaufgabe_Stand1;
-(function (L13_Abschlussaufgabe_Stand1) {
+  namespace L13_Abschlussaufgabe {
+
+    export interface VectorOld {
+        x: number;
+        y: number;
+    }
+
+    let url: string = "https://hanre.herokuapp.com/";
+    console.log(url);
+
     window.addEventListener("load", handleLoad);
+    export let crc2: CanvasRenderingContext2D;  // crc2 = CanvasRenderingContext2d
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
-    let moveables = [];
-    function handleLoad(_event) {
-        let canvas = document.querySelector("canvas");
+
+    let moveables: Moveable[] = [];
+
+    function handleLoad(_event: Event): void {
+        let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
-        L13_Abschlussaufgabe_Stand1.crc2 = canvas.getContext("2d");
-        let posMountain = { x: 0, y: 300 };
-        L13_Abschlussaufgabe_Stand1.drawBackground();
-        L13_Abschlussaufgabe_Stand1.drawSun({ x: 100, y: 75 });
-        L13_Abschlussaufgabe_Stand1.drawCloud({ x: 500, y: 125 }, { x: 250, y: 75 });
-        L13_Abschlussaufgabe_Stand1.drawMountains(posMountain, 75, 200, "grey", "white");
-        L13_Abschlussaufgabe_Stand1.drawMountains(posMountain, 50, 150, "grey", "lightgrey");
-        L13_Abschlussaufgabe_Stand1.drawTree();
-        L13_Abschlussaufgabe_Stand1.drawSnowman();
-        L13_Abschlussaufgabe_Stand1.drawHouse();
-        let background = L13_Abschlussaufgabe_Stand1.crc2.getImageData(0, 0, 800, 600);
+
+        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
+
+
+
+        let posMountain: VectorOld = {x: 0, y: 300};
+     
+
+        drawBackground();
+        drawSun({x: 100, y: 75});
+        drawCloud({x: 500, y: 125}, {x: 250, y: 75});
+        drawMountains(posMountain, 75, 200, "grey", "white");    
+        drawMountains(posMountain, 50, 150, "grey", "lightgrey");
+        drawTree();
+        drawSnowman();
+        drawHouse();
+
+        let background: ImageData = crc2.getImageData(0, 0, 800, 600);
+
         window.setInterval(update, 20, background);
+
+
         drawSnowflake();
         drawBirds();
         //      drawBirdOnHouse();
         //drawBirdOnGround(); 
+
     }
-    function drawSnowflake() {
+
+    function drawSnowflake(): void {
         console.log("Snowflake");
-        let nSnowflake = 100;
-        for (let i = 0; i < nSnowflake; i++) {
+
+        let nSnowflake: number = 100; 
+            
+
+        for (let i: number = 0; i < nSnowflake; i++) {
             // let snowflake: Path2D = new Path2D();
-            let snowflake = new L13_Abschlussaufgabe_Stand1.Snowflake();
+            let snowflake: Snowflake = new Snowflake();
             moveables.push(snowflake);
-        }
+            }
+            
+
     }
+
     /* function drawBirdOnGround(): void {
         console.log("Standing Birds!");
 
-        let nBird: number = 10;
+        let nBird: number = 10; 
         
 
         for (let i: number = 0; i < nBird; i++) {
@@ -45,9 +73,10 @@ var L13_Abschlussaufgabe_Stand1;
             let standBird: StandBird = new StandBird();
             moveables.push(standBird);
 
-        }
+        } 
 
     } */
+    
     /* function drawBirdOnHouse(): void {
         console.log("Bird on house");
 
@@ -88,24 +117,39 @@ var L13_Abschlussaufgabe_Stand1;
         crc2.stroke(bird3);
         crc2.stroke(bird4);
     } */
-    function drawBirds() {
+
+    function drawBirds(): void {
         console.log("Birds");
-        let nBird = 40;
-        for (let i = 0; i < nBird; i++) {
-            /*             let x: number = Math.random() * 800;
-                        let y: number = Math.random() * 600; */
-            let bird = new L13_Abschlussaufgabe_Stand1.Bird();
+
+        let nBird: number = 40; 
+
+        for (let i: number = 0; i < nBird; i++) {
+/*             let x: number = Math.random() * 800; 
+            let y: number = Math.random() * 600; */
+            let bird: Bird = new Bird();
             moveables.push(bird);
         }
-    }
-    function update(_backgroundData) {
+       
+    } 
+
+
+    function update(_backgroundData: ImageData): void {
         //console.log("Update!");
-        L13_Abschlussaufgabe_Stand1.crc2.putImageData(_backgroundData, 0, 0);
+
+        crc2.putImageData(_backgroundData, 0, 0);
+
         for (let moveable of moveables) {
             moveable.move();
             moveable.draw();
+
         }
+
         console.log("Moveable length: " + moveables.length);
+
+
     }
-})(L13_Abschlussaufgabe_Stand1 || (L13_Abschlussaufgabe_Stand1 = {}));
-//# sourceMappingURL=Vogelhaeuschen.js.map
+
+
+
+
+}

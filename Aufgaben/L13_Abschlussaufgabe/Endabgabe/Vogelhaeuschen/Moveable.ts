@@ -1,4 +1,4 @@
-namespace L13_Abschlussaufgabe_Stand1 {
+namespace L13_Abschlussaufgabe {
 
     export class Moveable {
         position: Vector;
@@ -17,7 +17,7 @@ namespace L13_Abschlussaufgabe_Stand1 {
     }
 
     move(): void {
-        console.log("Moveable draw");
+        //console.log("Moveable draw");
 
         this.position.add(this.velocity);
 

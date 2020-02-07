@@ -1,4 +1,4 @@
-  namespace L10_Inheritance_Vogelhaeuschen {
+  namespace L13_Abschlussaufgabe_Stand1 {
 
     export interface VectorOld {
         x: number;
@@ -40,7 +40,7 @@
         drawSnowflake();
         drawBirds();
         //      drawBirdOnHouse();
-        drawBirdOnGround(); 
+        //drawBirdOnGround(); 
 
     }
 
@@ -59,7 +59,7 @@
 
     }
 
-    function drawBirdOnGround(): void {
+    /* function drawBirdOnGround(): void {
         console.log("Standing Birds!");
 
         let nBird: number = 10; 
@@ -70,9 +70,9 @@
             let standBird: StandBird = new StandBird();
             moveables.push(standBird);
 
-        }
+        } 
 
-    }
+    } */
     
     /* function drawBirdOnHouse(): void {
         console.log("Bird on house");
@@ -118,10 +118,11 @@
     function drawBirds(): void {
         console.log("Birds");
 
-        let nBird: number = 10; 
+        let nBird: number = 40; 
 
         for (let i: number = 0; i < nBird; i++) {
-
+/*             let x: number = Math.random() * 800; 
+            let y: number = Math.random() * 600; */
             let bird: Bird = new Bird();
             moveables.push(bird);
         }

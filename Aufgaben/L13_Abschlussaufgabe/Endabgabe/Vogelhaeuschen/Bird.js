@@ -1,7 +1,7 @@
 "use strict";
-var L13_Abschlussaufgabe_Stand1;
-(function (L13_Abschlussaufgabe_Stand1) {
-    class Bird extends L13_Abschlussaufgabe_Stand1.Moveable {
+var L13_Abschlussaufgabe;
+(function (L13_Abschlussaufgabe) {
+    class Bird extends L13_Abschlussaufgabe.Moveable {
         constructor() {
             super();
             //console.log("Snowflake constructor");
@@ -9,7 +9,7 @@ var L13_Abschlussaufgabe_Stand1;
                         let y: number = 130 * Math.random();
             
                         this.position = new Vector(x, y); */
-            this.velocity = new L13_Abschlussaufgabe_Stand1.Vector(1, 1);
+            this.velocity = new L13_Abschlussaufgabe.Vector(1, 1);
         }
         /* move(): void {  // move von moveable wird nicht aufgerufen
             //console.log("Es bewegt sich!");
@@ -23,8 +23,8 @@ var L13_Abschlussaufgabe_Stand1;
         } */
         draw() {
             //console.log("HALLO draw");
-            L13_Abschlussaufgabe_Stand1.crc2.save();
-            L13_Abschlussaufgabe_Stand1.crc2.translate(this.position.x, this.position.y);
+            L13_Abschlussaufgabe.crc2.save();
+            L13_Abschlussaufgabe.crc2.translate(this.position.x, this.position.y);
             let bird1 = new Path2D;
             if (this.position.y <= 150) {
                 let x = this.position.x;
@@ -33,12 +33,12 @@ var L13_Abschlussaufgabe_Stand1;
                 let bird2 = new Path2D();
                 let newX = x + (2 * 10);
                 bird2.arc(newX, y, 10, 0, 1 * Math.PI, true);
-                L13_Abschlussaufgabe_Stand1.crc2.fillStyle = "black";
-                L13_Abschlussaufgabe_Stand1.crc2.lineWidth = 2;
-                L13_Abschlussaufgabe_Stand1.crc2.stroke(bird1);
-                L13_Abschlussaufgabe_Stand1.crc2.stroke(bird2);
-                L13_Abschlussaufgabe_Stand1.crc2.restore();
-                L13_Abschlussaufgabe_Stand1.crc2.closePath();
+                L13_Abschlussaufgabe.crc2.fillStyle = "black";
+                L13_Abschlussaufgabe.crc2.lineWidth = 2;
+                L13_Abschlussaufgabe.crc2.stroke(bird1);
+                L13_Abschlussaufgabe.crc2.stroke(bird2);
+                L13_Abschlussaufgabe.crc2.restore();
+                L13_Abschlussaufgabe.crc2.closePath();
             }
             else if (this.position.y > 150) {
                 let x = this.position.x;
@@ -53,16 +53,16 @@ var L13_Abschlussaufgabe_Stand1;
                 let bird2 = new Path2D();
                 let newX = x + (2 * 10);
                 bird2.arc(newX, y, 10, 0, 1 * Math.PI, true);
-                L13_Abschlussaufgabe_Stand1.crc2.fillStyle = "black";
-                L13_Abschlussaufgabe_Stand1.crc2.lineWidth = 2;
-                L13_Abschlussaufgabe_Stand1.crc2.stroke(bird1);
-                L13_Abschlussaufgabe_Stand1.crc2.stroke(bird2);
-                L13_Abschlussaufgabe_Stand1.crc2.stroke(leg);
-                L13_Abschlussaufgabe_Stand1.crc2.restore();
-                L13_Abschlussaufgabe_Stand1.crc2.closePath();
+                L13_Abschlussaufgabe.crc2.fillStyle = "black";
+                L13_Abschlussaufgabe.crc2.lineWidth = 2;
+                L13_Abschlussaufgabe.crc2.stroke(bird1);
+                L13_Abschlussaufgabe.crc2.stroke(bird2);
+                L13_Abschlussaufgabe.crc2.stroke(leg);
+                L13_Abschlussaufgabe.crc2.restore();
+                L13_Abschlussaufgabe.crc2.closePath();
             }
         }
     }
-    L13_Abschlussaufgabe_Stand1.Bird = Bird;
-})(L13_Abschlussaufgabe_Stand1 || (L13_Abschlussaufgabe_Stand1 = {}));
+    L13_Abschlussaufgabe.Bird = Bird;
+})(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Bird.js.map

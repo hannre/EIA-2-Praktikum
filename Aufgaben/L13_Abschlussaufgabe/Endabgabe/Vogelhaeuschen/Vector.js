@@ -1,6 +1,6 @@
 "use strict";
-var L13_Abschlussaufgabe_Stand1;
-(function (L13_Abschlussaufgabe_Stand1) {
+var L13_Abschlussaufgabe;
+(function (L13_Abschlussaufgabe) {
     class Vector {
         constructor(_x, _y) {
             this.set(_x, _y);
@@ -27,6 +27,6 @@ var L13_Abschlussaufgabe_Stand1;
             return new Vector(this.x, this.y);
         }
     }
-    L13_Abschlussaufgabe_Stand1.Vector = Vector;
-})(L13_Abschlussaufgabe_Stand1 || (L13_Abschlussaufgabe_Stand1 = {}));
+    L13_Abschlussaufgabe.Vector = Vector;
+})(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Vector.js.map

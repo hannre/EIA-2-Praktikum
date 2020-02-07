@@ -13,7 +13,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node Aufgaben/L06_Server/Cocktail_Bar/Server/Server.js"
+    "start": "node Aufgaben/L13_Abschlussaufgabe/Endabgabe/Vogelhaeuschen/Server/Server.js"
   },
   "repository": {
     "type": "git",

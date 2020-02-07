@@ -1,24 +1,27 @@
 "use strict";
-var L10_Inheritance_Vogelhaeuschen;
-(function (L10_Inheritance_Vogelhaeuschen) {
+var L13_Abschlussaufgabe_Stand1;
+(function (L13_Abschlussaufgabe_Stand1) {
     class Moveable {
         constructor() {
             console.log("Moveable constructor");
             let x = 800 * Math.random();
-            let y = (130 * Math.random()) + 150;
-            this.position = new L10_Inheritance_Vogelhaeuschen.Vector(x, y);
-            this.velocity = new L10_Inheritance_Vogelhaeuschen.Vector(1, 0);
+            let y = 600 * Math.random(); //(130 * Math.random()) + 150; 
+            this.position = new L13_Abschlussaufgabe_Stand1.Vector(x, y);
+            //this.velocity = new Vector(1, 0);
         }
         move() {
             console.log("Moveable draw");
             this.position.add(this.velocity);
-            if (this.position.x > 800)
-                this.position.x -= L10_Inheritance_Vogelhaeuschen.crc2.canvas.width;
+            if (this.position.x > L13_Abschlussaufgabe_Stand1.crc2.canvas.width)
+                this.position.x -= L13_Abschlussaufgabe_Stand1.crc2.canvas.width;
+            if (this.position.y >= L13_Abschlussaufgabe_Stand1.crc2.canvas.height) {
+                this.position.y -= L13_Abschlussaufgabe_Stand1.crc2.canvas.height;
+            }
         }
         draw() {
             //console.log("Moveable draw");
         }
     }
-    L10_Inheritance_Vogelhaeuschen.Moveable = Moveable;
-})(L10_Inheritance_Vogelhaeuschen || (L10_Inheritance_Vogelhaeuschen = {}));
+    L13_Abschlussaufgabe_Stand1.Moveable = Moveable;
+})(L13_Abschlussaufgabe_Stand1 || (L13_Abschlussaufgabe_Stand1 = {}));
 //# sourceMappingURL=Moveable.js.map

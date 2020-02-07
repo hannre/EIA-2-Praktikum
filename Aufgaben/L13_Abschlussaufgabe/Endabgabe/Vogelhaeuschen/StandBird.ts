@@ -1,4 +1,4 @@
-namespace L13_Abschlussaufgabe_Stand1 {
+namespace L13_Abschlussaufgabe {
 
     export class StandBird extends Moveable {
         position: Vector;
