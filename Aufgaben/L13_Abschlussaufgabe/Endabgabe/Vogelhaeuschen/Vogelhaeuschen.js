@@ -24,6 +24,7 @@ var L13_Abschlussaufgabe;
         window.setInterval(update, 20, background);
         drawSnowflake();
         drawBirds();
+        drawSnowball();
         //drawBirdOnHouse();
         //drawBirdOnGround(); 
         canvas.addEventListener("auxclick", foodHandler);
@@ -100,6 +101,11 @@ var L13_Abschlussaufgabe;
             moveables.push(bird);
         }
     }
+    function drawSnowball() {
+        console.log("Snowball");
+        let snowball = new L13_Abschlussaufgabe.Snowball();
+        moveables.push(snowball);
+    }
     function foodHandler(_event) {
         console.log("Rechtsklick funktioniert!");
         console.log(_event);
@@ -127,7 +133,31 @@ var L13_Abschlussaufgabe;
     }
     function snowballHandler(_event) {
         console.log("Linksklick funktioniert!");
+        let newPosition = new L13_Abschlussaufgabe.Vector((_event.clientX), (_event.clientY));
+        for (let moveable of moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Snowball) {
+                console.log("Schneeball wurde gefunden!");
+                moveable.flyToPosition(newPosition);
+            }
+        }
+        let snowballExist = false;
+        for (let moveable of moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Snowball) {
+                snowballExist = true;
+            }
+        }
+        if (snowballExist == false) {
+            drawSnowball();
+        }
     }
+    function deleteSnowball() {
+        for (let i = 0; i < moveables.length; i++) {
+            if (moveables[i] instanceof L13_Abschlussaufgabe.Snowball) {
+                moveables.splice(i, 1);
+            }
+        }
+    }
+    L13_Abschlussaufgabe.deleteSnowball = deleteSnowball;
     function flyNormal() {
         for (let moveable of moveables) {
             if (moveable instanceof L13_Abschlussaufgabe.Bird) {
@@ -148,10 +178,16 @@ var L13_Abschlussaufgabe;
             moveable.draw();
         }
         for (let moveable of moveables) {
-            if (moveable instanceof L13_Abschlussaufgabe.Bird)
+            if (moveable instanceof L13_Abschlussaufgabe.Bird) {
                 if (moveable.hungry) {
                     moveable.arrivedAtDestination();
                 }
+            }
+        }
+        for (let moveable of moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Snowball) {
+                moveable.arrivedAtDestination();
+            }
         }
         //console.log("Moveable length: " + moveables.length);
     }

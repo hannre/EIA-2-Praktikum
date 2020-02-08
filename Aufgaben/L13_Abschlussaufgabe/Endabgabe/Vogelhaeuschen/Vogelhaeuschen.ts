@@ -42,6 +42,7 @@ namespace L13_Abschlussaufgabe {
 
         drawSnowflake();
         drawBirds();
+        drawSnowball();
         //drawBirdOnHouse();
         //drawBirdOnGround(); 
         canvas.addEventListener("auxclick", foodHandler);
@@ -131,12 +132,20 @@ namespace L13_Abschlussaufgabe {
 
     }
 
+    function drawSnowball(): void {
+        console.log("Snowball");
+
+        let snowball: Snowball = new Snowball();
+        moveables.push(snowball);
+    }
+
+
     function foodHandler(_event: MouseEvent): void {
         console.log("Rechtsklick funktioniert!");
         console.log(_event);
 
         let newPosition: Vector = new Vector((_event.clientX / 2), (_event.clientY / 2));
-        for (let moveable of moveables) { 
+        for (let moveable of moveables) {
             if (moveable instanceof Bird) {
                 if (moveable.hungry) {
                     console.log("hungrige Vögel wurden gefunden!");
@@ -171,10 +180,41 @@ namespace L13_Abschlussaufgabe {
 
     function snowballHandler(_event: MouseEvent): void {
         console.log("Linksklick funktioniert!");
+        let newPosition: Vector = new Vector((_event.clientX), (_event.clientY));
+        for (let moveable of moveables) {
+            if (moveable instanceof Snowball) {
 
+                console.log("Schneeball wurde gefunden!");
+                moveable.flyToPosition(newPosition);
+
+
+
+            }
+        }
+        let snowballExist: boolean = false;
+
+        for (let moveable of moveables) {
+            if (moveable instanceof Snowball) {
+                snowballExist = true;
+            }
+        }
+
+        if (snowballExist == false) {
+            drawSnowball();
+        }
 
     }
 
+    export function deleteSnowball(): void {
+        for (let i: number = 0; i < moveables.length; i++) {
+            if (moveables[i] instanceof Snowball) {
+                moveables.splice(i, 1);
+
+            }
+        }
+
+
+    }
 
     export function flyNormal(): void {
         for (let moveable of moveables) {
@@ -208,19 +248,28 @@ namespace L13_Abschlussaufgabe {
         }
 
         for (let moveable of moveables) {
-            if (moveable instanceof Bird)
+            if (moveable instanceof Bird) {
                 if (moveable.hungry) {
                     moveable.arrivedAtDestination();
 
 
 
                 }
+            }
+        }
+
+        for (let moveable of moveables) {
+            if (moveable instanceof Snowball) {
+                moveable.arrivedAtDestination();
+
+            }
         }
         //console.log("Moveable length: " + moveables.length);
 
 
     }
 }
+
 
 
 
