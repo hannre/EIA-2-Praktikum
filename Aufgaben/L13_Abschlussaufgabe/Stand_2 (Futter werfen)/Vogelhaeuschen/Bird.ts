@@ -1,10 +1,8 @@
-namespace L13_Abschlussaufgabe {
+namespace L13_Abschlussaufgabe_Stand2 {
 
     export class Bird extends Moveable {
         destination: Vector;
         hungry: boolean;
-
-        isHit: boolean;
 
 
 

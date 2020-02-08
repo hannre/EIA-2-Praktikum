@@ -24,8 +24,10 @@ var L13_Abschlussaufgabe;
         window.setInterval(update, 20, background);
         drawSnowflake();
         drawBirds();
-        //      drawBirdOnHouse();
+        //drawBirdOnHouse();
         //drawBirdOnGround(); 
+        canvas.addEventListener("auxclick", foodHandler);
+        canvas.addEventListener("click", snowballHandler);
     }
     function drawSnowflake() {
         console.log("Snowflake");
@@ -94,12 +96,50 @@ var L13_Abschlussaufgabe;
         console.log("Birds");
         let nBird = 40;
         for (let i = 0; i < nBird; i++) {
-            /*             let x: number = Math.random() * 800;
-                        let y: number = Math.random() * 600; */
             let bird = new L13_Abschlussaufgabe.Bird();
             moveables.push(bird);
         }
     }
+    function foodHandler(_event) {
+        console.log("Rechtsklick funktioniert!");
+        console.log(_event);
+        let newPosition = new L13_Abschlussaufgabe.Vector((_event.clientX / 2), (_event.clientY / 2));
+        for (let moveable of moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Bird) {
+                if (moveable.hungry) {
+                    console.log("hungrige Vögel wurden gefunden!");
+                    moveable.flyToFood(newPosition);
+                }
+            }
+        }
+        let foodPostion = new L13_Abschlussaufgabe.Vector(_event.clientX, _event.clientY);
+        let food = new L13_Abschlussaufgabe.Food(foodPostion);
+        moveables.push(food);
+        setTimeout(clearFood, 6000);
+    }
+    function clearFood() {
+        //console.log("ClearFood wird aufgerufen!");
+        for (let i = 0; i < moveables.length; i++) {
+            if (moveables[i] instanceof L13_Abschlussaufgabe.Food) {
+                moveables.splice(i, 1);
+            }
+        }
+    }
+    function snowballHandler(_event) {
+        console.log("Linksklick funktioniert!");
+    }
+    function flyNormal() {
+        for (let moveable of moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Bird) {
+                if (moveable.hungry) {
+                    if (Math.random() * 6 < 0.09) {
+                        moveable.velocity = new L13_Abschlussaufgabe.Vector(1, 1); // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
+                    }
+                }
+            }
+        }
+    }
+    L13_Abschlussaufgabe.flyNormal = flyNormal;
     function update(_backgroundData) {
         //console.log("Update!");
         L13_Abschlussaufgabe.crc2.putImageData(_backgroundData, 0, 0);
@@ -107,7 +147,13 @@ var L13_Abschlussaufgabe;
             moveable.move();
             moveable.draw();
         }
-        console.log("Moveable length: " + moveables.length);
+        for (let moveable of moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Bird)
+                if (moveable.hungry) {
+                    moveable.arrivedAtDestination();
+                }
+        }
+        //console.log("Moveable length: " + moveables.length);
     }
 })(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Vogelhaeuschen.js.map

@@ -3,7 +3,7 @@ var L13_Abschlussaufgabe;
 (function (L13_Abschlussaufgabe) {
     class Moveable {
         constructor() {
-            console.log("Moveable constructor");
+            //console.log("Moveable constructor");
             let x = 800 * Math.random();
             let y = 600 * Math.random(); //(130 * Math.random()) + 150; 
             this.position = new L13_Abschlussaufgabe.Vector(x, y);

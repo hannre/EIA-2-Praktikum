@@ -11,15 +11,6 @@ var L13_Abschlussaufgabe;
             this.velocity = new L13_Abschlussaufgabe.Vector(0, 1 + Math.random() * 3);
             //this.velocity.random(100, 200);   // 100 bzw. 200 Pixel pro Sekunde
         }
-        move() {
-            //console.log("Es bewegt sich!");
-            //let newMove: Vector = new Vector (this.velocity.x, this.velocity.y);
-            //newMove.scale(_timleslice);
-            this.position.add(this.velocity);
-            // Schneeflocken - unendlich fligen:
-            if (this.position.y > 600)
-                this.position.y -= L13_Abschlussaufgabe.crc2.canvas.height;
-        }
         draw() {
             //console.log("draw");
             L13_Abschlussaufgabe.crc2.beginPath();
