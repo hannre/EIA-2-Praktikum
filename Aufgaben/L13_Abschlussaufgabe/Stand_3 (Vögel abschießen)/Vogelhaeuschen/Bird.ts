@@ -1,4 +1,4 @@
-namespace L13_Abschlussaufgabe {
+namespace L13_Abschlussaufgabe_Stand3 {
 
     export class Bird extends Moveable {
         destination: Vector;
