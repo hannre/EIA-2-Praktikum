@@ -3,7 +3,7 @@ namespace L13_Abschlussaufgabe {
 
     window.addEventListener("load", handleLoad);
 
-    let url: string = "https://hanre.herokuapp.com/";
+    let url: string = "https://hanre.herokuapp.com/"; 
 
     function handleLoad(_event: Event): void {
     document.getElementById("Liste").addEventListener("click", handleRetriveHS);
