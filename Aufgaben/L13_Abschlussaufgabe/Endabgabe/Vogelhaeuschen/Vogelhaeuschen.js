@@ -241,7 +241,7 @@ var L13_Abschlussaufgabe;
         paragraph1.innerHTML = "Dein Score beträgt: " + score;
     }
     function endOfGame() {
-        let name = prompt("Your Score " + score, "Please enter your name"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
+        let name = prompt("Dein erreichter Score " + score, "Gebe hier deinen Namen ein"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
         if (name != null) {
             sendEntry(name, score);
         }

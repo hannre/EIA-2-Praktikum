@@ -337,7 +337,7 @@ namespace L13_Abschlussaufgabe {
     }
 
     function endOfGame(): void {
-        let name: any = prompt("Your Score " + score, "Please enter your name"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
+        let name: any = prompt("Dein erreichter Score " + score, "Gebe hier deinen Namen ein"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
         if (name != null) {
             sendEntry(name, score);
         }
