@@ -8,8 +8,8 @@ export namespace L13_Abschlussaufgabe {
     let highscore: Mongo.Collection;
     let databaseURL: string;
 
-    let dbName: string = "FirstFantasy";
-    let dbCollection: string = "Characters";
+    let dbName: string = "Vogelhaus";
+    let dbCollection: string = "score";
 
     
     databaseURL = "mongodb+srv://Test13:hallo11@eia2-8pl7g.mongodb.net/test?retryWrites=true&w=majority";
