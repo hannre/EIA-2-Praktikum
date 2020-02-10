@@ -136,7 +136,7 @@ namespace L13_Abschlussaufgabe {
     function drawBirds(): void {
         console.log("Birds");
 
-        let nBird: number = 40;
+        let nBird: number = 20;
 
         for (let i: number = 0; i < nBird; i++) {
             let bird: Bird = new Bird();
@@ -253,7 +253,7 @@ namespace L13_Abschlussaufgabe {
                 if (moveable.hungry) {
 
                     if (Math.random() * 6 < 0.09) {
-                        moveable.velocity = new Vector(0.25, 0.25);  // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
+                        moveable.velocity = new Vector(0.5, 0.5);  // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
                     }
 
                 }
@@ -286,17 +286,28 @@ namespace L13_Abschlussaufgabe {
             }
         }
 
+        let a: number = 0;
+        let b: number = 0;
+
         for (let i: number = 0; i < moveables.length; i++) {
             if (moveables[i] instanceof Bird) {
                 if (moveables[i].isHit) {
                     if (moveables[i].hungry) {
+                        a += 1;
                         score += 10;
                         console.log("hungriger und pickender Vogel wurde getötet");
+
+                        let paragraph: HTMLDivElement = <HTMLDivElement>document.querySelector("p#info");
+                        paragraph.innerHTML = "Du hast gerade " + a + " pickende(n) Vogel getroffen: 10P x " + a + " = +" + (10 * a) + "P";
                     }
 
                     else {
+                        b += 1;
                         score += 20;
                         console.log("fliegender Vogel wird getötet");
+
+                        let paragraph: HTMLDivElement = <HTMLDivElement>document.querySelector("p#info");
+                        paragraph.innerHTML = "Du hast gerade " + b + " fliegenden Vogel getroffen: 20P x " + b + " = +" + (20 * b) + "P";
                     }
 
                     console.log("der Score beträgt: " + score);
@@ -320,8 +331,8 @@ namespace L13_Abschlussaufgabe {
         //----Score wird im HTML erstellt:
 
 
-        let paragraph: HTMLDivElement = <HTMLDivElement>document.querySelector("p#score");
-        paragraph.innerHTML = "Dein Score beträgt: " + score;
+        let paragraph1: HTMLDivElement = <HTMLDivElement>document.querySelector("p#score");
+        paragraph1.innerHTML = "Dein Score beträgt: " + score;
 
 
 

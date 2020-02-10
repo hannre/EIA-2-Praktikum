@@ -34,7 +34,7 @@ var L07_CocktailBar;
         _response.setHeader("content-type", "text/html, charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
-            let url = Url.parse(_request.url, true);
+            let url = Url.parse(_request.url, true); // assoziatives Array aus _request.url wird erstellt
             console.log(url.query);
             for (let key in url.query) {
                 _response.write(key + ":" + url.query[key] + "<br/>");

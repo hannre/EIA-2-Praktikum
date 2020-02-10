@@ -20,16 +20,33 @@ namespace L13_Abschlussaufgabe {
             
                         this.position = new Vector(x, y); */
 
-            this.velocity = new Vector(0.25, 0.25);
+            this.velocity = new Vector(0.5, 0.5);
 
             this.isHit = false;
 
-            if (Math.random() * 5 <= 0.5) {
+            if (Math.random() * 5 <= 1.25) {
                 this.hungry = true;
             }
 
         }
 
+        move(): void {
+
+            this.position.add(this.velocity);
+
+            if (this.position.x >= 400) {
+                this.position.x -= 400;
+            }
+            if (this.position.y >= 300) {
+                this.position.y -=  300;
+            }
+            if (this.position.x <= 0) {
+                this.position.x += 400;
+            }
+            if (this.position.y <= 0) {
+                this.position.y += 300;
+            }
+        }
 
         flyToFood(_newPosition: Vector): void {
             //console.log("flyToFood funktioniert!");

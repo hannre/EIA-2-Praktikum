@@ -101,7 +101,7 @@ var L13_Abschlussaufgabe;
     } */
     function drawBirds() {
         console.log("Birds");
-        let nBird = 40;
+        let nBird = 20;
         for (let i = 0; i < nBird; i++) {
             let bird = new L13_Abschlussaufgabe.Bird();
             L13_Abschlussaufgabe.moveables.push(bird);
@@ -183,7 +183,7 @@ var L13_Abschlussaufgabe;
             if (moveable instanceof L13_Abschlussaufgabe.Bird) {
                 if (moveable.hungry) {
                     if (Math.random() * 6 < 0.09) {
-                        moveable.velocity = new L13_Abschlussaufgabe.Vector(0.25, 0.25); // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
+                        moveable.velocity = new L13_Abschlussaufgabe.Vector(0.5, 0.5); // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
                     }
                 }
             }
@@ -204,16 +204,24 @@ var L13_Abschlussaufgabe;
                 }
             }
         }
+        let a = 0;
+        let b = 0;
         for (let i = 0; i < L13_Abschlussaufgabe.moveables.length; i++) {
             if (L13_Abschlussaufgabe.moveables[i] instanceof L13_Abschlussaufgabe.Bird) {
                 if (L13_Abschlussaufgabe.moveables[i].isHit) {
                     if (L13_Abschlussaufgabe.moveables[i].hungry) {
+                        a += 1;
                         score += 10;
                         console.log("hungriger und pickender Vogel wurde getötet");
+                        let paragraph = document.querySelector("p#info");
+                        paragraph.innerHTML = "Du hast gerade " + a + " pickende(n) Vogel getroffen: 10P x " + a + " = +" + (10 * a) + "P";
                     }
                     else {
+                        b += 1;
                         score += 20;
                         console.log("fliegender Vogel wird getötet");
+                        let paragraph = document.querySelector("p#info");
+                        paragraph.innerHTML = "Du hast gerade " + b + " fliegenden Vogel getroffen: 20P x " + b + " = +" + (20 * b) + "P";
                     }
                     console.log("der Score beträgt: " + score);
                     L13_Abschlussaufgabe.moveables.splice(i, 1); // getroffene Vögel werden gelöscht
@@ -228,8 +236,8 @@ var L13_Abschlussaufgabe;
         }
         //console.log("Moveable length: " + moveables.length);
         //----Score wird im HTML erstellt:
-        let paragraph = document.querySelector("p#score");
-        paragraph.innerHTML = "Dein Score beträgt: " + score;
+        let paragraph1 = document.querySelector("p#score");
+        paragraph1.innerHTML = "Dein Score beträgt: " + score;
     }
 })(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Vogelhaeuschen.js.map
