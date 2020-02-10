@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-var MyFuwa_last;
-(function (MyFuwa_last) {
+var L13_Abschlussaufgabe;
+(function (L13_Abschlussaufgabe) {
     let highscore;
     let databaseURL;
     let dbName = "FirstFantasy";
@@ -65,5 +65,5 @@ var MyFuwa_last;
         else
             return "We encountered tecnical problems. Please try again later";
     }
-})(MyFuwa_last = exports.MyFuwa_last || (exports.MyFuwa_last = {}));
+})(L13_Abschlussaufgabe = exports.L13_Abschlussaufgabe || (exports.L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Server.js.map

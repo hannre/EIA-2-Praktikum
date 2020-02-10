@@ -2,7 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-export namespace L13_Abschlussaufgabe {
+export namespace L13_Abschlussaufgabe_Stand4 {
 
 
     let highscore: Mongo.Collection;
