@@ -337,7 +337,7 @@ namespace L13_Abschlussaufgabe {
     }
 
     function endOfGame(): void {
-        let name: any = prompt("Dein erreichter Score " + score, "Gebe hier deinen Namen ein"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
+        let name: any = prompt("Dein erreichter Score: " + score, "Gebe hier deinen Namen ein"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
         if (name != null) {
             sendEntry(name, score);
         }
@@ -347,7 +347,7 @@ namespace L13_Abschlussaufgabe {
 
     async function sendEntry(_name: string, _score: number): Promise<void> {
         let query: string = "score=" + _score + "&name=" + _name;
-        let response: Response = await fetch(url + "?" + query);
+        let response: Response = await fetch(url + "?" + query); 
         let responseText: string = await response.text();
         alert(response);
     }
