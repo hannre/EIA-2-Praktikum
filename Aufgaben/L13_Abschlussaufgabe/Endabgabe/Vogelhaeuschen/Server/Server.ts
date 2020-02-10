@@ -2,7 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-export namespace MyFuwa_last {
+export namespace L13_Abschlussaufgabe {
 
 
     let highscore: Mongo.Collection;
