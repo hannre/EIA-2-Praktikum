@@ -35,6 +35,7 @@ var L13_Abschlussaufgabe;
         //drawBirdOnGround(); 
         canvas.addEventListener("auxclick", foodHandler);
         canvas.addEventListener("click", snowballHandler);
+        window.setTimeout(endOfGame, 30000);
     }
     function drawSnowflake() {
         console.log("Snowflake");
@@ -238,6 +239,19 @@ var L13_Abschlussaufgabe;
         //----Score wird im HTML erstellt:
         let paragraph1 = document.querySelector("p#score");
         paragraph1.innerHTML = "Dein Score beträgt: " + score;
+    }
+    function endOfGame() {
+        let name = prompt("Your Score " + score, "Please enter your name"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
+        if (name != null) {
+            sendEntry(name, score);
+        }
+        window.open("https://hannre.github.io/EIA-2-Praktikum/Aufgaben/L13_Abschlussaufgabe/Endabgabe/Vogelhaeuschen/Vogelhaus_Start.html", "_self");
+    }
+    async function sendEntry(_name, _score) {
+        let query = "score=" + _score + "&name=" + _name;
+        let response = await fetch(url + "?" + query);
+        let responseText = await response.text();
+        alert(response);
     }
 })(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Vogelhaeuschen.js.map

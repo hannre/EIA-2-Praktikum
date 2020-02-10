@@ -58,7 +58,7 @@ namespace L13_Abschlussaufgabe {
         canvas.addEventListener("auxclick", foodHandler);
         canvas.addEventListener("click", snowballHandler);
 
-
+        window.setTimeout(endOfGame, 30000);
 
     }
 
@@ -334,12 +334,26 @@ namespace L13_Abschlussaufgabe {
         let paragraph1: HTMLDivElement = <HTMLDivElement>document.querySelector("p#score");
         paragraph1.innerHTML = "Dein Score beträgt: " + score;
 
-
-
-
-
-
     }
+
+    function endOfGame(): void {
+        let name: any = prompt("Your Score " + score, "Please enter your name"); //dann beides in Datenbank! und wenn es ausgefüllt wurde zurück zur startseite!!
+        if (name != null) {
+            sendEntry(name, score);
+        }
+        window.open("https://hannre.github.io/EIA-2-Praktikum/Aufgaben/L13_Abschlussaufgabe/Endabgabe/Vogelhaeuschen/Vogelhaus_Start.html", "_self");
+    }
+
+
+    async function sendEntry(_name: string, _score: number): Promise<void> {
+        let query: string = "score=" + _score + "&name=" + _name;
+        let response: Response = await fetch(url + "?" + query);
+        let responseText: string = await response.text();
+        alert(response);
+    }
+
+
+
 }
 
 
