@@ -7,8 +7,8 @@ var L13_Abschlussaufgabe;
 (function (L13_Abschlussaufgabe) {
     let highscore;
     let databaseURL;
-    let dbName = "FirstFantasy";
-    let dbCollection = "Characters";
+    let dbName = "Vogelhaus";
+    let dbCollection = "score";
     databaseURL = "mongodb+srv://Test13:hallo11@eia2-8pl7g.mongodb.net/test?retryWrites=true&w=majority";
     let port = process.env.PORT;
     if (port == undefined)
