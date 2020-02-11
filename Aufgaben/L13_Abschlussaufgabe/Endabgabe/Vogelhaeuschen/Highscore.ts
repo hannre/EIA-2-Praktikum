@@ -17,7 +17,16 @@ namespace L13_Abschlussaufgabe {
         let responseText: string = await response.text();
 
         let highscore: HTMLDivElement = <HTMLDivElement>document.querySelector("div#inhalt");
-        highscore.innerText = responseText;
+        //highscore.innerText = responseText;
+        let entries: any[] = JSON.parse(responseText);
+
+        for (let entry of entries) {
+            let paragraph: HTMLParagraphElement = document.createElement("p");
+            paragraph.innerText = entry.name + ": " + entry.score + " Punkte";
+            highscore.appendChild(paragraph);
+        }
+
+
     }
 
 

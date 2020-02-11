@@ -12,7 +12,13 @@ var L13_Abschlussaufgabe;
         let response = await fetch(url + "?" + query);
         let responseText = await response.text();
         let highscore = document.querySelector("div#inhalt");
-        highscore.innerText = responseText;
+        //highscore.innerText = responseText;
+        let entries = JSON.parse(responseText);
+        for (let entry of entries) {
+            let paragraph = document.createElement("p");
+            paragraph.innerText = entry.name + ": " + entry.score + " Punkte";
+            highscore.appendChild(paragraph);
+        }
     }
 })(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));
 //# sourceMappingURL=Highscore.js.map
