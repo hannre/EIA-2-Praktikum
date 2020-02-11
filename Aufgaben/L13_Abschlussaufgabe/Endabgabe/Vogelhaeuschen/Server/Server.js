@@ -56,7 +56,7 @@ var L13_Abschlussaufgabe;
     }
     async function retrieveOrders() {
         // console.log("Asking DB about Orders ", highscore.find());
-        let cursor = await highscore.find({ $query: {}, $orderby: { score: -1 } });
+        let cursor = await highscore.find().sort({ score: -1 });
         let answer = await cursor.toArray();
         console.log("DB CursorToArray", answer);
         if (answer != null) {
