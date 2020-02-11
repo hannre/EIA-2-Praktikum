@@ -343,15 +343,15 @@ namespace L13_Abschlussaufgabe {
         if (name != null) {
             sendEntry(name, score);
         }
-        window.open("https://hannre.github.io/EIA-2-Praktikum/Aufgaben/L13_Abschlussaufgabe/Endabgabe/Vogelhaeuschen/Vogelhaus_Start.html", "_self");
+        
     }
 
 
     async function sendEntry(_name: string, _score: number): Promise<void> {
         let query: string = "score=" + _score + "&name=" + _name;
         let response: Response = await fetch(url + "?" + query);
-        let responseText: string = await response.text();
-        alert(response);
+        await response.text();
+        window.open("https://hannre.github.io/EIA-2-Praktikum/Aufgaben/L13_Abschlussaufgabe/Endabgabe/Vogelhaeuschen/Vogelhaus_Start.html", "_self");
     }
 
 
