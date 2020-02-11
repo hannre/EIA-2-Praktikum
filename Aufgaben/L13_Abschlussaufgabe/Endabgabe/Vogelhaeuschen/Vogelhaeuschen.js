@@ -1,8 +1,6 @@
 "use strict";
 var L13_Abschlussaufgabe;
 (function (L13_Abschlussaufgabe) {
-    let url = "https://hanre.herokuapp.com/";
-    console.log(url);
     let score = 0;
     /* let div: HTMLDivElement = <HTMLDivElement>document.querySelector("div#score");
     let text: HTMLParagraphElement = document.createElement("p");

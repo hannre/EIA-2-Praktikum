@@ -5,9 +5,6 @@ namespace L13_Abschlussaufgabe {
         y: number;
     }
 
-    let url: string = "https://hanre.herokuapp.com/";
-    console.log(url);
-
     let score: number = 0;
 
     /* let div: HTMLDivElement = <HTMLDivElement>document.querySelector("div#score");
