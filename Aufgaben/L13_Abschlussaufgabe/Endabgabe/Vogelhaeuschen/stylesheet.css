@@ -3,7 +3,14 @@ body {background-color: rgba(179, 250, 191, 0.486);}
 #inhalt {
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
+
+span {font-weight: bolder;}
+
+#Los {font-size: 1.09em;
+    font-weight: bolder;
+    color: rgb(76, 141, 85);}
 
 button {font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: #555555;
@@ -15,4 +22,4 @@ button {font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Luc
     border-radius: 12px;}
 
 
-button:hover {background-color: rgb(109, 163, 118);}
+button:hover {background-color: rgb(76, 141, 85);}
