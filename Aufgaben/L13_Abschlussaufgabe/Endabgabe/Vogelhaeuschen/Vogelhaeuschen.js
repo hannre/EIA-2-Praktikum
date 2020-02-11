@@ -2,14 +2,11 @@
 var L13_Abschlussaufgabe;
 (function (L13_Abschlussaufgabe) {
     let score = 0;
-    /* let div: HTMLDivElement = <HTMLDivElement>document.querySelector("div#score");
-    let text: HTMLParagraphElement = document.createElement("p");
-    text.textContent = ""; */
-    window.addEventListener("load", handleLoad);
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
     L13_Abschlussaufgabe.snowballFly = false;
     console.log("Start SnowballFly: " + L13_Abschlussaufgabe.snowballFly);
     L13_Abschlussaufgabe.moveables = [];
+    window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)

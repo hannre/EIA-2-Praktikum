@@ -12,7 +12,7 @@ namespace L13_Abschlussaufgabe {
     text.textContent = ""; */
 
 
-    window.addEventListener("load", handleLoad);
+
     export let crc2: CanvasRenderingContext2D;  // crc2 = CanvasRenderingContext2d
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
 
@@ -21,7 +21,7 @@ namespace L13_Abschlussaufgabe {
 
     export let moveables: Moveable[] = [];
 
-
+    window.addEventListener("load", handleLoad);
 
     function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -340,7 +340,7 @@ namespace L13_Abschlussaufgabe {
         if (name != null) {
             sendEntry(name, score);
         }
-        
+
     }
 
 
