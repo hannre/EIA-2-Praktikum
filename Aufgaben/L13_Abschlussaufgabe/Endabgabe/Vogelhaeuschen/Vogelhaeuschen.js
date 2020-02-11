@@ -125,20 +125,22 @@ var L13_Abschlussaufgabe;
     function foodHandler(_event) {
         //console.log("Rechtsklick funktioniert!");
         console.log(_event);
-        let newPosition = new L13_Abschlussaufgabe.Vector((_event.clientX / 2), (_event.clientY / 2));
-        for (let moveable of L13_Abschlussaufgabe.moveables) {
-            if (moveable instanceof L13_Abschlussaufgabe.Bird) {
-                if (moveable.hungry) {
-                    //console.log("hungrige Vögel wurden gefunden!");
-                    moveable.flyToFood(newPosition);
-                    console.log("Hier ist ein hungriger Vogel");
+        let foodPosition = new L13_Abschlussaufgabe.Vector(_event.clientX, _event.clientY);
+        if (foodPosition.y > 300) {
+            let food = new L13_Abschlussaufgabe.Food(foodPosition);
+            L13_Abschlussaufgabe.moveables.push(food);
+            let newPosition = new L13_Abschlussaufgabe.Vector((_event.clientX / 2), (_event.clientY / 2));
+            for (let moveable of L13_Abschlussaufgabe.moveables) {
+                if (moveable instanceof L13_Abschlussaufgabe.Bird) {
+                    if (moveable.hungry) {
+                        //console.log("hungrige Vögel wurden gefunden!");
+                        moveable.flyToFood(newPosition);
+                        console.log("Hier ist ein hungriger Vogel");
+                    }
                 }
             }
         }
-        let foodPostion = new L13_Abschlussaufgabe.Vector(_event.clientX, _event.clientY);
-        let food = new L13_Abschlussaufgabe.Food(foodPostion);
-        L13_Abschlussaufgabe.moveables.push(food);
-        setTimeout(clearFood, 4500);
+        setTimeout(clearFood, 5000);
     }
     function clearFood() {
         //console.log("ClearFood wird aufgerufen!");
@@ -183,7 +185,7 @@ var L13_Abschlussaufgabe;
         for (let moveable of L13_Abschlussaufgabe.moveables) {
             if (moveable instanceof L13_Abschlussaufgabe.Bird) {
                 if (moveable.hungry) {
-                    if (Math.random() * 6 < 0.09) {
+                    if (Math.random() * 6 < 0.25) {
                         moveable.velocity = new L13_Abschlussaufgabe.Vector(0.5, 0.5); // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
                     }
                 }

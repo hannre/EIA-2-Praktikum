@@ -167,26 +167,28 @@ namespace L13_Abschlussaufgabe {
         //console.log("Rechtsklick funktioniert!");
         console.log(_event);
 
-        let newPosition: Vector = new Vector((_event.clientX / 2), (_event.clientY / 2));
-        for (let moveable of moveables) {
-            if (moveable instanceof Bird) {
+        let foodPosition: Vector = new Vector(_event.clientX, _event.clientY);
+        if (foodPosition.y > 300) {
+
+            let food: Food = new Food(foodPosition);
+            moveables.push(food);
+
+            let newPosition: Vector = new Vector((_event.clientX / 2), (_event.clientY / 2));
+            for (let moveable of moveables) {
+                if (moveable instanceof Bird) {
+                    if (moveable.hungry) {
+                        //console.log("hungrige Vögel wurden gefunden!");
+                        moveable.flyToFood(newPosition);
+                        console.log("Hier ist ein hungriger Vogel");
 
 
-                if (moveable.hungry) {
-                    //console.log("hungrige Vögel wurden gefunden!");
-                    moveable.flyToFood(newPosition);
-                    console.log("Hier ist ein hungriger Vogel");
-
-
+                    }
                 }
             }
+
         }
 
-        let foodPostion: Vector = new Vector(_event.clientX, _event.clientY);
-        let food: Food = new Food(foodPostion);
-        moveables.push(food);
-
-        setTimeout(clearFood, 4500);
+        setTimeout(clearFood, 5000);
     }
 
 
@@ -252,7 +254,7 @@ namespace L13_Abschlussaufgabe {
             if (moveable instanceof Bird) {
                 if (moveable.hungry) {
 
-                    if (Math.random() * 6 < 0.09) {
+                    if (Math.random() * 6 < 0.25) {
                         moveable.velocity = new Vector(0.5, 0.5);  // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
                     }
 
@@ -347,7 +349,7 @@ namespace L13_Abschlussaufgabe {
 
     async function sendEntry(_name: string, _score: number): Promise<void> {
         let query: string = "score=" + _score + "&name=" + _name;
-        let response: Response = await fetch(url + "?" + query); 
+        let response: Response = await fetch(url + "?" + query);
         let responseText: string = await response.text();
         alert(response);
     }
