@@ -1,14 +1,15 @@
 namespace L13_Abschlussaufgabe {
 
 
-    window.addEventListener("load", handleLoad);
+    //window.addEventListener("load", handleLoad);
+    window.addEventListener("load", handleRetriveHS);
 
     let url: string = "https://hanre.herokuapp.com/"; 
 
-    function handleLoad(_event: Event): void {
+    /* function handleLoad(_event: Event): void {
     document.getElementById("Liste").addEventListener("click", handleRetriveHS);
 
-    }
+    } */
 
     async function handleRetriveHS(_event: Event): Promise<void> {
         let query: string = "command=retrieve";
