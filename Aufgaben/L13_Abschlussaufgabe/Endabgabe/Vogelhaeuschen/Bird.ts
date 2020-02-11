@@ -4,6 +4,7 @@ namespace L13_Abschlussaufgabe {
         
         public hungry: boolean = false;
         public isHit: boolean;
+        public eat: boolean;
 
         private destination: Vector;
 
@@ -22,6 +23,8 @@ namespace L13_Abschlussaufgabe {
             this.velocity = new Vector(0.5, 0.5);
 
             this.isHit = false;
+
+            this.eat = false; 
 
             if (Math.random() * 5 <= 1.25) {
                 this.hungry = true;
@@ -65,8 +68,10 @@ namespace L13_Abschlussaufgabe {
                 let nullVelocity: Vector = new Vector(0, 0);
                 this.velocity = nullVelocity;
                 //console.log("Birds arrived!");
-
-                setTimeout(flyNormal, 1500);
+                this.eat = true; 
+                
+                this.destination = new Vector(1000, 1000);
+                setTimeout(flyNormal, 500);
             }
 
         }

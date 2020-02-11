@@ -6,6 +6,7 @@ namespace L13_Abschlussaufgabe {
 
         public hungry: boolean;
         public isHit: boolean;
+        public eat: boolean;
 
 
 

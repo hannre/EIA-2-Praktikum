@@ -2,6 +2,7 @@
 var L13_Abschlussaufgabe;
 (function (L13_Abschlussaufgabe) {
     let score = 0;
+    let url = "https://hanre.herokuapp.com/";
     //let golden: number = 0.62;  // golden = Goldener Schnitt bei ungefähr 0.62
     L13_Abschlussaufgabe.snowballFly = false;
     console.log("Start SnowballFly: " + L13_Abschlussaufgabe.snowballFly);
@@ -22,12 +23,12 @@ var L13_Abschlussaufgabe;
         L13_Abschlussaufgabe.drawSnowman();
         L13_Abschlussaufgabe.drawHouse();
         let background = L13_Abschlussaufgabe.crc2.getImageData(0, 0, 800, 600);
-        window.setInterval(update, 20, background);
         drawSnowflake();
         drawBirds();
         drawSnowball();
         //drawBirdOnHouse();
         //drawBirdOnGround(); 
+        window.setInterval(update, 20, background);
         canvas.addEventListener("auxclick", foodHandler);
         canvas.addEventListener("click", snowballHandler);
         window.setTimeout(endOfGame, 30000);
@@ -41,60 +42,6 @@ var L13_Abschlussaufgabe;
             L13_Abschlussaufgabe.moveables.push(snowflake);
         }
     }
-    /* function drawBirdOnGround(): void {
-        console.log("Standing Birds!");
-
-        let nBird: number = 10;
-        
-
-        for (let i: number = 0; i < nBird; i++) {
-            
-            let standBird: StandBird = new StandBird();
-            moveables.push(standBird);
-
-        }
-
-    } */
-    /* function drawBirdOnHouse(): void {
-        console.log("Bird on house");
-
-        let r: number = 10;
-
-        // --- Vogel 1
-        let bird: Path2D = new Path2D();
-        let x: number = 424;
-        let y: number = 420;
-        bird.arc(x, y, r, 0, 1 * Math.PI, true);
-
-        let bird2: Path2D = new Path2D();
-        
-        let newX: number = x + (2 * r);
-        bird2.arc(newX, y, r, 0, 1 * Math.PI, true);
-
-        crc2.fillStyle = "black";
-        crc2.lineWidth = 2;
-        crc2.stroke(bird);
-        crc2.stroke(bird2);
-
-
-        // --- Vogel 2
-
-        let bird3: Path2D = new Path2D();
-        x = 395;
-        y = 403;
-
-        bird3.arc(x, y, r, 0, 1 * Math.PI, true);
-
-        let bird4: Path2D = new Path2D();
-        
-        newX = x + (2 * r);
-        bird4.arc(newX, y, r, 0, 1 * Math.PI, true);
-
-        crc2.fillStyle = "black";
-        crc2.lineWidth = 2;
-        crc2.stroke(bird3);
-        crc2.stroke(bird4);
-    } */
     function drawBirds() {
         console.log("Birds");
         let nBird = 20;
@@ -102,6 +49,11 @@ var L13_Abschlussaufgabe;
             let bird = new L13_Abschlussaufgabe.Bird();
             L13_Abschlussaufgabe.moveables.push(bird);
         }
+    }
+    function drawSnowball() {
+        console.log("Snowball");
+        let snowball = new L13_Abschlussaufgabe.Snowball();
+        L13_Abschlussaufgabe.moveables.push(snowball);
     }
     function drawTargetCross(_newPosition) {
         //console.log("drawTargetCross wird aufgerufen!");
@@ -112,11 +64,6 @@ var L13_Abschlussaufgabe;
         }
     }
     L13_Abschlussaufgabe.drawTargetCross = drawTargetCross;
-    function drawSnowball() {
-        console.log("Snowball");
-        let snowball = new L13_Abschlussaufgabe.Snowball();
-        L13_Abschlussaufgabe.moveables.push(snowball);
-    }
     function foodHandler(_event) {
         //console.log("Rechtsklick funktioniert!");
         console.log(_event);
@@ -145,6 +92,21 @@ var L13_Abschlussaufgabe;
             }
         }
     }
+    async function Sleep(milliseconds) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds));
+    }
+    async function flyNormal() {
+        for (let moveable of L13_Abschlussaufgabe.moveables) {
+            if (moveable instanceof L13_Abschlussaufgabe.Bird) {
+                if (moveable.hungry) {
+                    moveable.velocity = new L13_Abschlussaufgabe.Vector(0.5, 0.5); // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
+                    moveable.eat = false;
+                    await Sleep(500);
+                }
+            }
+        }
+    }
+    L13_Abschlussaufgabe.flyNormal = flyNormal;
     function snowballHandler(_event) {
         //console.log("Linksklick funktioniert!");
         let newPosition = new L13_Abschlussaufgabe.Vector((_event.clientX), (_event.clientY));
@@ -176,18 +138,6 @@ var L13_Abschlussaufgabe;
         }
     }
     L13_Abschlussaufgabe.deleteSnowball = deleteSnowball;
-    function flyNormal() {
-        for (let moveable of L13_Abschlussaufgabe.moveables) {
-            if (moveable instanceof L13_Abschlussaufgabe.Bird) {
-                if (moveable.hungry) {
-                    if (Math.random() * 6 < 0.25) {
-                        moveable.velocity = new L13_Abschlussaufgabe.Vector(0.5, 0.5); // bewirkt das Vögel nacheinander losfliegen, da bei manchen Vögel erst bei einem späteren Durchgang die Bedingung erfüllt ist
-                    }
-                }
-            }
-        }
-    }
-    L13_Abschlussaufgabe.flyNormal = flyNormal;
     function update(_backgroundData) {
         //console.log("Update!");
         L13_Abschlussaufgabe.crc2.putImageData(_backgroundData, 0, 0);
@@ -207,7 +157,7 @@ var L13_Abschlussaufgabe;
         for (let i = 0; i < L13_Abschlussaufgabe.moveables.length; i++) {
             if (L13_Abschlussaufgabe.moveables[i] instanceof L13_Abschlussaufgabe.Bird) {
                 if (L13_Abschlussaufgabe.moveables[i].isHit) {
-                    if (L13_Abschlussaufgabe.moveables[i].hungry) {
+                    if (L13_Abschlussaufgabe.moveables[i].eat) {
                         a += 1;
                         score += 10;
                         console.log("hungriger und pickender Vogel wurde getötet");

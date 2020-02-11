@@ -12,6 +12,7 @@ var L13_Abschlussaufgabe;
                         this.position = new Vector(x, y); */
             this.velocity = new L13_Abschlussaufgabe.Vector(0.5, 0.5);
             this.isHit = false;
+            this.eat = false;
             if (Math.random() * 5 <= 1.25) {
                 this.hungry = true;
             }
@@ -45,7 +46,9 @@ var L13_Abschlussaufgabe;
                 let nullVelocity = new L13_Abschlussaufgabe.Vector(0, 0);
                 this.velocity = nullVelocity;
                 //console.log("Birds arrived!");
-                setTimeout(L13_Abschlussaufgabe.flyNormal, 1500);
+                this.eat = true;
+                this.destination = new L13_Abschlussaufgabe.Vector(1000, 1000);
+                setTimeout(L13_Abschlussaufgabe.flyNormal, 500);
             }
         }
         hitBird(_position) {
