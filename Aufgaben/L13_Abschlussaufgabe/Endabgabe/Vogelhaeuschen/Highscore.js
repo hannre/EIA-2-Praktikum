@@ -16,7 +16,7 @@ var L13_Abschlussaufgabe;
         let entries = JSON.parse(responseText);
         for (let entry of entries) {
             let paragraph = document.createElement("p");
-            paragraph.innerText = entry.name + ": " + entry.score + " Punkte";
+            paragraph.innerText = entry.score + " Punkte: " + entry.name;
             highscore.appendChild(paragraph);
         }
     }
