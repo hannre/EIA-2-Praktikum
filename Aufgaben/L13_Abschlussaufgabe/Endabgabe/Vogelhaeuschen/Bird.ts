@@ -1,12 +1,11 @@
 namespace L13_Abschlussaufgabe {
 
     export class Bird extends Moveable {
-        destination: Vector;
-        hungry: boolean = false;
+        
+        public hungry: boolean = false;
+        public isHit: boolean;
 
-        isHit: boolean;
-
-
+        private destination: Vector;
 
 
 
@@ -30,7 +29,7 @@ namespace L13_Abschlussaufgabe {
 
         }
 
-        move(): void {
+        public move(): void {
 
             this.position.add(this.velocity);
 
@@ -48,7 +47,7 @@ namespace L13_Abschlussaufgabe {
             }
         }
 
-        flyToFood(_newPosition: Vector): void {
+        public flyToFood(_newPosition: Vector): void {
             //console.log("flyToFood funktioniert!");
             this.destination = _newPosition;
             let newVelocity: Vector = _newPosition.substract(this.position);
@@ -61,7 +60,7 @@ namespace L13_Abschlussaufgabe {
 
         }
 
-        arrivedAtDestination(): void {
+        public arrivedAtDestination(): void {
             if (this.destination && (this.position == this.destination || (this.position.x <= this.destination.x + 10 && this.position.y <= this.destination.y + 10 && this.position.x >= this.destination.x - 10 && this.position.y >= this.destination.y - 10))) {
                 let nullVelocity: Vector = new Vector(0, 0);
                 this.velocity = nullVelocity;
@@ -72,7 +71,7 @@ namespace L13_Abschlussaufgabe {
 
         }
 
-        hitBird(_position: Vector): void {
+        public hitBird(_position: Vector): void {
             //console.log("hitbird wird aufgerufen");
             
             this.destination = _position;
@@ -85,7 +84,7 @@ namespace L13_Abschlussaufgabe {
         }
 
 
-        draw(): void {
+        public draw(): void {
             //console.log("HALLO draw");
 
             crc2.save();

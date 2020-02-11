@@ -26,7 +26,7 @@ namespace L13_Abschlussaufgabe {
 
 
 
-        draw (): void {
+        public draw (): void {
             //console.log("draw");
 
             //first food-particle:

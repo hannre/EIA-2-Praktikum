@@ -25,9 +25,6 @@ var L13_Abschlussaufgabe;
                 this.position.y += L13_Abschlussaufgabe.crc2.canvas.height;
             }
         }
-        draw() {
-            //console.log("Moveable draw");
-        }
     }
     L13_Abschlussaufgabe.Moveable = Moveable;
 })(L13_Abschlussaufgabe || (L13_Abschlussaufgabe = {}));

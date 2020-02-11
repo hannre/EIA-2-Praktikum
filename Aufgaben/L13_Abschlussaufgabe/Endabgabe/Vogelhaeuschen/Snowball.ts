@@ -1,10 +1,7 @@
 namespace L13_Abschlussaufgabe {
 
     export class Snowball extends Moveable {
-        destination: Vector;
-
-
-
+        private destination: Vector;
 
         constructor(_position?: Vector) {
             super();
@@ -15,7 +12,7 @@ namespace L13_Abschlussaufgabe {
 
         }
 
-        flyToPosition(_newPosition: Vector): void {
+        public flyToPosition(_newPosition: Vector): void {
             this.destination = _newPosition;
             let newVelocity: Vector = this.destination.substract(this.position);
             let smallerVelocityX: number = newVelocity.x * 0.03;
@@ -27,7 +24,7 @@ namespace L13_Abschlussaufgabe {
             
         }
 
-        arrivedAtDestination(): void {
+        public arrivedAtDestination(): void {
             if (this.destination && (this.position == this.destination || (this.position.x <= this.destination.x + 10 && this.position.y <= this.destination.y + 10 && this.position.x >= this.destination.x - 10 && this.position.y >= this.destination.y - 10))) {
                 let nullVelocity: Vector = new Vector(0, 0);
                 this.velocity = nullVelocity;
@@ -50,7 +47,7 @@ namespace L13_Abschlussaufgabe {
         }
 
 
-        draw(): void {
+        public draw(): void {
             //console.log("draw");
 
             crc2.beginPath();

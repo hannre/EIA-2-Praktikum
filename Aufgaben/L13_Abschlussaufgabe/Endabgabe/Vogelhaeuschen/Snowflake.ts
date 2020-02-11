@@ -22,7 +22,7 @@ namespace L13_Abschlussaufgabe {
 
 
 
-        draw (): void {
+        public draw (): void {
             //console.log("draw");
 
             crc2.beginPath();
